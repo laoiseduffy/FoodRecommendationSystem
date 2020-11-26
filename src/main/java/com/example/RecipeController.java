@@ -1,12 +1,11 @@
 package com.example;
 
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collections;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "https://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class RecipeController {
 
     private final RecipeRepository recipeRepository;
@@ -17,7 +16,8 @@ public class RecipeController {
 
     @GetMapping("/recipes")
     public List<meals> getRecipes() {
-        return (List<meals>) recipeRepository.findAllById(Collections.singleton(1L));
+        System.out.println("At the GET!");
+        return (List<meals>) recipeRepository.findAll();
     }
 
     @PostMapping("/recipes")
