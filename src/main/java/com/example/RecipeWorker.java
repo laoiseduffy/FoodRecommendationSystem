@@ -10,6 +10,7 @@ public class RecipeWorker {
 
     private final RecipeRepository recipeRepository;
 
+    @Autowired
     public RecipeWorker(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }

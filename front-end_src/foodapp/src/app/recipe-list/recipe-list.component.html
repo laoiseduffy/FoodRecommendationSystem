@@ -1,37 +1,23 @@
 <h4 class="list-header">List of Recommendations</h4>
 <div class="row">
   <div class="column" style="background-color:#aaa;">
-    <ol>
-      <li *ngFor="let recipe of recipes">
-        Title: {{ recipe.title }}
-        Description: {{ recipe.description }}
-      </li>
-    </ol>
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2>Column 2</h2>
-    <p>Some text..</p>
+      <ol>
+        <li *ngFor="let recipe of recipes">
+          <b>Title:</b>
+          {{ recipe.title }} <br>
+          <b>Description:</b>
+          {{ recipe.description }}
+        </li>
+      </ol>
   </div>
 </div>
 
 
-<!--<div class="card my-5">-->
-<!--  <div class="card-body">-->
-<!--    <table class="table table-bordered table-striped">-->
-<!--      <thead class="thead-dark">-->
-<!--      <tr>-->
-<!--        <th scope="col">#</th>-->
-<!--        <th scope="col">Title</th>-->
-<!--        <th scope="col">Description</th>-->
-<!--      </tr>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--      <tr *ngFor="let recipe of recipes">-->
-<!--        <td>{{ recipe.mealid }}</td>-->
-<!--        <td>{{ recipe.title }}</td>-->
-<!--        <td>{{ recipe.description }}</td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-<!--  </div>-->
+<!--<div class="column" style="background-color:#bbb;">-->
+<!--  <ol>-->
+<!--    <li *ngFor="let recipe of secondList">-->
+<!--      Title: {{ recipe.title }}-->
+<!--      Description: {{ recipe.description }}-->
+<!--    </li>-->
+<!--  </ol>-->
 <!--</div>-->
