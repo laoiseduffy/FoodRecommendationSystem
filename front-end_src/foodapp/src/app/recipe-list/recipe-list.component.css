@@ -1,18 +1,28 @@
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 100%;
-  padding: 10px;
-  height: auto;
-}
 
 .list-header {
   padding: 10px;
+  color: dodgerblue;
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.card-data {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+
+.card {
+  width: 40%;
+  height: auto;
+  background-color: #f1f1f1;
+  margin: 10px;
+  color: black;
+  text-align: left;
+  vertical-align: middle;
+  border: blue;
+}
+
+.img {
+  float:right;
+}
+

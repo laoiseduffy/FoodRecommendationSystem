@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="false" />
+    <value-preview-text-wrapping value="true" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -25,13 +25,16 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="a2665c57-af10-457e-ba45-277138457d0e">
-        <schema name="fooddb" object-types="view, table" />
+        <schema name="fooddb" object-types="view, function, procedure, table, index, column, constraint, dataset trigger" />
+        <schema name="mysql" object-types="view, function, table" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a2665c57-af10-457e-ba45-277138457d0e">
-      <console name="Food DB" type="STANDARD" schema="mysql" session="Main" />
+      <console name="Food DB" type="STANDARD" schema="mysql" session="Main"><![CDATA[select * from fooddb.meals;
+update fooddb.meals
+set description = trim('</' from description);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

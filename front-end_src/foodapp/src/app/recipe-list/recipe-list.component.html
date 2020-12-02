@@ -1,23 +1,36 @@
 <h4 class="list-header">List of Recommendations</h4>
 <div class="row">
-  <div class="column" style="background-color:#aaa;">
-      <ol>
-        <li *ngFor="let recipe of recipes">
-          <b>Title:</b>
-          {{ recipe.title }} <br>
-          <b>Description:</b>
-          {{ recipe.description }}
-        </li>
-      </ol>
+  <div class="card-data">
+    <div class="card" *ngFor="let recipe of recipes; let i=index">
+      <p>
+        <strong>{{i+1}}. Title:</strong>
+        {{ recipe.title }}
+      </p>
+      <p>
+        <b>Description:</b>
+        {{ recipe.description }}
+      </p>
+      <p class="im">
+        <img src="{{recipe.image_url}}" style="width:100px;height:60px;">
+      </p>
+    </div>
   </div>
 </div>
 
 
-<!--<div class="column" style="background-color:#bbb;">-->
+<!--<div class="card-data">-->
 <!--  <ol>-->
-<!--    <li *ngFor="let recipe of secondList">-->
-<!--      Title: {{ recipe.title }}-->
-<!--      Description: {{ recipe.description }}-->
+<!--    <li *ngFor="let recipe of recipes; let i=index">-->
+<!--      <div class="card">-->
+<!--        <p> {{i+1}}.-->
+<!--          <strong>Title:</strong>-->
+<!--          {{ recipe.title }}-->
+<!--        </p>-->
+<!--        <p>-->
+<!--          <b>Description:</b>-->
+<!--          {{ recipe.description }}-->
+<!--        </p>-->
+<!--      </div>-->
 <!--    </li>-->
 <!--  </ol>-->
 <!--</div>-->
