@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../model/meal';
 import { RecipeService } from '../service/recipe-service.service';
-
+import { Router } from '@angular/router';
 
 @Component({
             selector: 'app-recipe-list',
@@ -12,7 +12,7 @@ export class RecipeListComponent implements OnInit {
 
   recipes: Recipe[];
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit() {
     console.log("Here");
@@ -20,5 +20,9 @@ export class RecipeListComponent implements OnInit {
       this.recipes = data;
      });
   }
+
+  gotoInfo() {
+      this.router.navigate(['/recipe-info']);
+    }
 
 }

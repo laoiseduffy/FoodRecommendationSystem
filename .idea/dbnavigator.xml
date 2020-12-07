@@ -11,8 +11,8 @@
       <quote-values-containing-separator value="true" />
       <quote-all-values value="false" />
       <value-separator value="" />
-      <file-name value="" />
-      <file-location value="" />
+      <file-name value="meals.xls" />
+      <file-location value="$PROJECT_DIR$/../CSC3002" />
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
@@ -25,26 +25,33 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="a2665c57-af10-457e-ba45-277138457d0e">
-        <schema name="fooddb" object-types="view, table" />
+        <schema name="fooddb" object-types="procedure, view, table, constraint, index, dataset trigger, function, column" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a2665c57-af10-457e-ba45-277138457d0e">
       <console name="Food DB" type="STANDARD" schema="mysql" session="Main"><![CDATA[select * from fooddb.meals;
-update fooddb.meals
-set description = trim('</' from description);]]></console>
+
+create]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="a2665c57-af10-457e-ba45-277138457d0e" object-ref="schemas/fooddb/tables/meals" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="a2665c57-af10-457e-ba45-277138457d0e" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="fooddb.meals" active-filter-id="e47b7c62-5a83-4e6e-9b9e-9fc58ee55442">
-      <filter id="e47b7c62-5a83-4e6e-9b9e-9fc58ee55442" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="fooddb.meals" active-filter-id="EMPTY_FILTER">
+      <filter id="e47b7c62-5a83-4e6e-9b9e-9fc58ee55442" name="50" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="protein" operator="&gt;=" value="50" active="true" />
+      </filter>
+      <filter id="87646757-873d-49bf-9eee-f2f189a5af1a" name="201 AND 500" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="mealid" operator="between" value="201 AND 500" active="true" />
+      </filter>
     </filter-actions>
     <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="mysql.recipe" active-filter-id="edd67429-8bed-434e-879a-dc1b26789e1f">
       <filter id="edd67429-8bed-434e-879a-dc1b26789e1f" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
