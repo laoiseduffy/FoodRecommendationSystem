@@ -9,12 +9,6 @@ import java.util.Random;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class RecipeController {
-//    private final RecipeWorker recipeWorker;
-
-//    @Autowired
-//    public RecipeController(RecipeWorker recipeWorker) {
-//        this.recipeWorker = recipeWorker;
-//    }
 
     private final RecipeRepository recipeRepository;
 
@@ -25,7 +19,6 @@ public class RecipeController {
     @GetMapping("/recipes")
     public List<meals> getRecipes() {
         System.out.println("At the GET!");
-//        return recipeWorker.getRecommendations();
 
         List<meals> allMeals = (List<meals>) recipeRepository.findAll();
         Random rand = new Random();
@@ -38,9 +31,4 @@ public class RecipeController {
         return recommendedMeals;
 
     }
-
-//    @PostMapping("/recipes")
-//    public void addRecipe(@RequestBody meals meal) {
-//        recipeRepository.save(meal);
-//    }
 }

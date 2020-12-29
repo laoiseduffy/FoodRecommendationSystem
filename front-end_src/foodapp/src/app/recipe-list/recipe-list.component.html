@@ -1,8 +1,12 @@
+
 <h4 class="list-header">Top 10 Recommendations</h4>
+
 <div class="row">
-<!--  <a routerLink="/recipe-info">Recipe Info</a>-->
+
+  <a routerLink="/recipe-info">Click</a>
   <div class="card-data">
     <div class="card" *ngFor="let recipe of recipes; let i=index">
+
       <img class="card-img-top" src="{{recipe.image_url}}" alt="Image not found">
       <div class="card-body">
         <p><strong>{{i+1}}.</strong></p>
@@ -17,5 +21,7 @@
       </div>
     </div>
   </div>
+
 </div>
-<router-outlet></router-outlet>
+
+

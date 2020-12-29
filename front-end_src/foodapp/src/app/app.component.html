@@ -1,8 +1,15 @@
 <div class="container">
+  <div class="header">
+    <a href="#default" class="logo">Bia Athlete</a>
+    <div class="header-right">
+      <a class="active" href="#home" routerLinkActive="active-link">Home</a>
+      <a routerLink="/recipes" routerLinkActive="active-link">Recommendations</a>
+      <a href="#profile" routerLinkActive="active-link">Profile</a>
+      <a href="#help" routerLinkActive="active-link">Help</a>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-12">
-      <a routerLink="/recipes"></a>
-      <app-recipe-list></app-recipe-list>
       <router-outlet></router-outlet>
     </div>
   </div>

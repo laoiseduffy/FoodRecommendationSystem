@@ -5,16 +5,7 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { RecipeInfoComponent } from './recipe-info/recipe-info.component';
 
 const routes: Routes = [
-  {
-    path: 'recipes',
-    component: RecipeListComponent,
-//     children: [
-//       {
-//         path: 'recipe-info',
-//         component: RecipeInfoComponent,
-//       },
-//     ],
-  },
+  { path: 'recipes', component: RecipeListComponent, },
   { path: 'addrecipe', component: RecipeFormComponent },
   { path: 'recipe-info', component: RecipeInfoComponent }
 ];
