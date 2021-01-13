@@ -24,6 +24,18 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
+.card-title {
+  color: #585858;
+}
+
+.card-description {
+  color: #848484;
+}
+
+.card-footer {
+  text-align: right;
+}
+
 .img {
   float:right;
 }

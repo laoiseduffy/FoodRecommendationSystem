@@ -31,12 +31,6 @@
   color: black;
 }
 
-/* Style the active/current link*/
-.header a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-
 /* Float the link section to the right */
 .header-right {
   float: right;
@@ -52,9 +46,4 @@
   .header-right {
     float: none;
   }
-}
-
-html *
-{
-   font-family: Courier;
 }

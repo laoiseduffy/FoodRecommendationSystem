@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Recipe } from '../model/meal';
 
 @Component({
   selector: 'app-recipe-info',
@@ -6,11 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe-info.component.css']
 })
 export class RecipeInfoComponent implements OnInit {
+  recipe;
+  constructor(private route: ActivatedRoute,) {
 
-  constructor() { }
+  }
 
-  ngOnInit(): void {
-    console.log("Hello from recipe info");
+  ngOnInit() {
+    this.getRecipe();
+  }
+
+  getRecipe(): void {
+    const recipeIdFromRoute = this.route.snapshot.paramMap.get('mealid');
+    console.log(recipeIdFromRoute);
   }
 
 }

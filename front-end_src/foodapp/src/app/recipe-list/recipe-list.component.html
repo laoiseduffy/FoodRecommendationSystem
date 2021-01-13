@@ -3,25 +3,17 @@
 
 <div class="row">
 
-  <a routerLink="/recipe-info">Click</a>
   <div class="card-data">
     <div class="card" *ngFor="let recipe of recipes; let i=index">
-
       <img class="card-img-top" src="{{recipe.image_url}}" alt="Image not found">
       <div class="card-body">
-        <p><strong>{{i+1}}.</strong></p>
-        <p>
-          <strong>Title:</strong>
-          {{ recipe.title }}
-        </p>
-        <p>
-          <b>Description:</b>
-          {{ recipe.description }}
-        </p>
+        <h5 class="card-title">{{ recipe.title }}</h5>
+        <h6 class="card-description">{{ recipe.description }}</h6>
+      </div>
+      <div class="card-footer">
+        <a routerLink="/recipe-info/{{recipe.mealid}}" class="card-link">More Info</a>
       </div>
     </div>
   </div>
 
 </div>
-
-
