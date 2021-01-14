@@ -1,1 +1,5 @@
 <p>recipe-info works!</p>
+<div *ngFor="let recipe of recipes; let i=index">
+  <h5 class="card-title">{{ recipe.title }}</h5>
+  <h6 class="card-description">{{ recipe.description }}</h6>
+</div>

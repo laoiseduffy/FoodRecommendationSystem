@@ -15,12 +15,14 @@ export class RecipeService {
     this.recipeUrl = 'http://localhost:8080/recipes';
   }
 
-  //https://localhost:4200
-
   public findAll(): Observable<Recipe[]> {
     this.observableRecipeList = this.http.get<Recipe[]>(this.recipeUrl);
+    console.log("Fetching from db");
     console.log(this.observableRecipeList);
-    console.log(this.recipeList);
+    return this.observableRecipeList;
+  }
+
+  public getRecipeList(): Observable<Recipe[]> {
     return this.observableRecipeList;
   }
 
@@ -28,14 +30,3 @@ export class RecipeService {
     return this.http.post<Recipe>(this.recipeUrl, recipe);
   }
 }
-
-//
-//       .map(res => {
-//         return res.json().results.map(recipe => {
-//           return new Recipe(recipe.mealid, recipe.carbs, recipe.cookTime,
-//             recipe.description, recipe.fat, recipe.fibre, recipe.image_url,
-//             recipe.ingredients, recipe.kcal, recipe.keywords, recipe.method,
-//             recipe.prepTime, recipe.protein, recipe.rating, recipe.salt,
-//             recipe.saturates, recipe.sugars, recipe.title);
-//         });
-//       });
