@@ -10,6 +10,7 @@ export class RecipeService {
   private recipeUrl: string;
   recipeList: Recipe[];
   observableRecipeList: Observable<Recipe[]>;
+  selectedRecipe: Recipe;
 
   constructor(private http: HttpClient) {
     this.recipeUrl = 'http://localhost:8080/recipes';
@@ -24,6 +25,11 @@ export class RecipeService {
 
   public getRecipeList(): Observable<Recipe[]> {
     return this.observableRecipeList;
+  }
+
+  public findRecipeById(mealId: number): Observable<Recipe> {
+    console.log(this.recipeUrl + `/${mealId}`);
+    return this.http.get<Recipe>(this.recipeUrl + `/${mealId}`);
   }
 
   public save(recipe: Recipe) {

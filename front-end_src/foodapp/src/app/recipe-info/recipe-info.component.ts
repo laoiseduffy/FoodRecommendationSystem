@@ -10,24 +10,23 @@ import { RecipeService } from '../service/recipe-service.service';
 })
 export class RecipeInfoComponent implements OnInit {
 
-  recipe;
-  recipes: Recipe[];
+  recipe: Recipe;
+  mealId: number;
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService) {
 
   }
 
   ngOnInit() {
-    this.getRecipe();
     console.log("Here");
-    this.recipeService.getRecipeList().subscribe(data => {
-      this.recipes = data;
-     });
+    this.mealId = this.getRecipe();
+    this.recipeService.findRecipeById(this.mealId).subscribe(data => {
+      this.recipe = data;
+    });
   }
 
-  getRecipe(): void {
-    const recipeIdFromRoute = this.route.snapshot.paramMap.get('mealid');
-    console.log(recipeIdFromRoute);
+  getRecipe(): number {
+    return Number(this.route.snapshot.paramMap.get('mealid'));
   }
 
 }

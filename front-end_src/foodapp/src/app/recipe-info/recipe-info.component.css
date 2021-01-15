@@ -1,0 +1,22 @@
+.title {
+  padding: 10px;
+  color: #4BB2D0;
+  text-align: center;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: auto; /* Should be removed. Only for demonstration */
+  color: #848484;
+}
+
+.row {
+  color: #848484;
+}
+
+.img {
+  width: 100%;
+  height: 450px;
+}

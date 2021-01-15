@@ -1,5 +1,25 @@
-<p>recipe-info works!</p>
-<div *ngFor="let recipe of recipes; let i=index">
-  <h5 class="card-title">{{ recipe.title }}</h5>
-  <h6 class="card-description">{{ recipe.description }}</h6>
+<div>
+  <header>
+    <h1 class="title">{{ recipe.title }}</h1>
+  </header>
+
+  <div class="row">
+    <div class="column">
+      <h5>{{ recipe.description }}</h5>
+      <p>
+        <b>Cook Time:</b> {{ recipe.cookTime }} minutes<br>
+        <b>Prep Time:</b> {{ recipe.prepTime }} minutes<br>
+        <b>Total Time:</b> {{ recipe.prepTime+recipe.cookTime }} minutes
+      </p>
+      <h5> Ingredients </h5>
+      <p>{{ recipe.ingredients }} </p>
+    </div>
+    <div class="column">
+      <img class="img" src="{{recipe.image_url}}" alt="Image not found">
+    </div>
+  </div>
+  <div class="row">
+    <h5> Method </h5>
+    <p>{{ recipe.method }} </p>
+  </div>
 </div>

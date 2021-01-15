@@ -21,8 +21,5 @@ export class RecipeListComponent implements OnInit {
      });
   }
 
-  gotoInfo() {
-      this.router.navigate(['/recipe-info']);
-    }
 
 }
