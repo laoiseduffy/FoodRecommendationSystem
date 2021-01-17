@@ -12,6 +12,9 @@ export class RecipeInfoComponent implements OnInit {
 
   recipe: Recipe;
   mealId: number;
+  proteinDegrees: number;
+  fatDegrees: number;
+  carbDegrees: number;
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService) {
 

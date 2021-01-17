@@ -4,7 +4,7 @@ public class Recipe {
 
     private long mealid;
     private long carbs;
-    private long cookTime;
+    private double cookTime;
     private String description;
     private long fat;
     private long fibre;
@@ -13,7 +13,7 @@ public class Recipe {
     private long kcal;
     private String[] keywords;
     private String method;
-    private long prepTime;
+    private double prepTime;
     private long protein;
     private double rating;
     private long salt;
@@ -24,7 +24,7 @@ public class Recipe {
     private double carbsPercentage;
     private double fatPercentage;
 
-    public Recipe(long mealid, long carbs, long cookTime, String description, long fat, long fibre, String image_url, String[] ingredients, long kcal, String[] keywords, String method, long prepTime, long protein, double rating, long salt, long saturates, long sugars, String title, double proteinPercentage, double carbsPercentage, double fatPercentage) {
+    public Recipe(long mealid, long carbs, double cookTime, String description, long fat, long fibre, String image_url, String[] ingredients, long kcal, String[] keywords, String method, double prepTime, long protein, double rating, long salt, long saturates, long sugars, String title, double proteinPercentage, double carbsPercentage, double fatPercentage) {
         this.mealid = mealid;
         this.carbs = carbs;
         this.cookTime = cookTime;
@@ -64,11 +64,11 @@ public class Recipe {
         this.carbs = carbs;
     }
 
-    public long getCookTime() {
+    public double getCookTime() {
         return cookTime;
     }
 
-    public void setCookTime(long cookTime) {
+    public void setCookTime(double cookTime) {
         this.cookTime = cookTime;
     }
 
@@ -136,11 +136,11 @@ public class Recipe {
         this.method = method;
     }
 
-    public long getPrepTime() {
+    public double getPrepTime() {
         return prepTime;
     }
 
-    public void setPrepTime(long prepTime) {
+    public void setPrepTime(double prepTime) {
         this.prepTime = prepTime;
     }
 

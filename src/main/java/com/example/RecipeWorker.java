@@ -52,9 +52,12 @@ public class RecipeWorker {
         double proteinPercentage = calculateMacros(meal.getProtein()*4,meal.getKcal());
         double fatPercentage = calculateMacros(meal.getFat()*9, meal.getKcal());
         double carbPercentage = calculateMacros(meal.getCarbs()*4, meal.getKcal());
-        return new Recipe(meal.getMealid(), meal.getCarbs(), meal.getCookTime(), meal.getDescription(), meal.getFat(),
+        double cookTimeInMinutes = meal.getCookTime()/60;
+        double prepTimeInMinutes = meal.getPrepTime()/60;
+
+        return new Recipe(meal.getMealid(), meal.getCarbs(), cookTimeInMinutes, meal.getDescription(), meal.getFat(),
                 meal.getFibre(), meal.getImage_url(), ingredients, meal.getKcal(), keywords, method,
-                meal.getPrepTime(), meal.getProtein(), meal.getRating(), meal.getSalt(), meal.getSaturates(),
+                prepTimeInMinutes, meal.getProtein(), meal.getRating(), meal.getSalt(), meal.getSaturates(),
                 meal.getSugars(), meal.getTitle(), proteinPercentage, carbPercentage, fatPercentage);
     }
 

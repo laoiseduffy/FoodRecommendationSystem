@@ -20,3 +20,36 @@
   width: 100%;
   height: 450px;
 }
+
+.protein {
+  color: pink;
+  text-align: right;
+  margin-right: 200px;
+}
+
+.carbs {
+  color: lightblue;
+  text-align: right;
+  margin-right: 200px;
+}
+
+.fat {
+  color: orange;
+  text-align: right;
+  margin-right: 200px;
+}
+
+.piechart {
+  display: block;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+body,
+  .piechart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }

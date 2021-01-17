@@ -33,12 +33,25 @@
       </ul>
     </div>
   </div>
-  <div>
-    <h5>Nutrition</h5>
-    <p>
-      {{recipe.proteinPercentage}}
-      {{recipe.carbsPercentage}}
-      {{recipe.fatPercentage}}
-    </p>
+  <div class="row">
+    <div class="column">
+      <h5>Nutrition</h5>
+    </div>
+    <div class="column">
+      <h5>Macronutrient Percentages</h5>
+      <div class="piechart" style="background-image: conic-gradient(
+      pink {{ recipe.proteinPercentage * 360 }}deg,
+      lightblue 0 {{ recipe.carbsPercentage * 360 + recipe.proteinPercentage * 360}}deg,
+      orange 0)"></div>
+      <p class="protein">
+        Protein
+      </p>
+      <p class="carbs">
+        Carbs
+      </p>
+      <p class="fat">
+        Fat
+      </p>
+    </div>
   </div>
 </div>
