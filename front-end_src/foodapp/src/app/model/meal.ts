@@ -6,9 +6,9 @@ export class Recipe {
     fat: number;
     fibre: number;
     image_url: string;
-    ingredients: string;
+    ingredients: string[];
     kcal: number;
-    keywords: string;
+    keywords: string[];
     method: string;
     prepTime: number;
     protein: number;
@@ -17,4 +17,7 @@ export class Recipe {
     saturates: number;
     sugars: number;
     title: string;
+    proteinPercentage: number;
+    carbsPercentage: number;
+    fatPercentage: number;
 }

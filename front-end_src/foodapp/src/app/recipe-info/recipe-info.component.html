@@ -6,20 +6,39 @@
   <div class="row">
     <div class="column">
       <h5>{{ recipe.description }}</h5>
+      <br>
+      <p>{{ recipe.keywords }}</p>
+      <br>
       <p>
         <b>Cook Time:</b> {{ recipe.cookTime }} minutes<br>
         <b>Prep Time:</b> {{ recipe.prepTime }} minutes<br>
         <b>Total Time:</b> {{ recipe.prepTime+recipe.cookTime }} minutes
       </p>
-      <h5> Ingredients </h5>
-      <p>{{ recipe.ingredients }} </p>
     </div>
     <div class="column">
       <img class="img" src="{{recipe.image_url}}" alt="Image not found">
     </div>
   </div>
   <div class="row">
-    <h5> Method </h5>
-    <p>{{ recipe.method }} </p>
+    <div class="column">
+      <h5> Method </h5>
+      <p>{{ recipe.method }} </p>
+    </div>
+    <div class="column">
+      <h5> Ingredients </h5>
+      <ul>
+        <li  *ngFor="let ingredient of recipe.ingredients" >
+          {{ ingredient }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <h5>Nutrition</h5>
+    <p>
+      {{recipe.proteinPercentage}}
+      {{recipe.carbsPercentage}}
+      {{recipe.fatPercentage}}
+    </p>
   </div>
 </div>

@@ -15,12 +15,12 @@ public class RecipeController {
     }
 
     @GetMapping("/recipes")
-    public List<meals> getRecipes() {
+    public List<Recipe> getRecipes() {
         return recipeWorker.getRecommendations();
     }
 
     @GetMapping("/recipes/{id}")
-    public meals getRecipeById(@PathVariable Long id) {
+    public Recipe getRecipeById(@PathVariable Long id) {
         return recipeWorker.getMealById(id);
     }
 }

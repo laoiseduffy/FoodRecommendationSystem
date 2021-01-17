@@ -25,8 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="a2665c57-af10-457e-ba45-277138457d0e">
-        <schema name="fooddb" object-types="constraint, index, table, view, column, function, dataset trigger, procedure" />
-        <schema name="mysql" object-types="table, view, function, procedure" />
+        <schema name="fooddb" object-types="procedure, table, index, constraint, dataset trigger, function, view, column" />
       </connection>
     </loaded-nodes>
   </component>
@@ -88,7 +87,7 @@ create]]></console>
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="5.6" />
+          <database-version value="5.7" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
