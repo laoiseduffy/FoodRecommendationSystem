@@ -29,6 +29,54 @@ public class RecipeWorker {
         return recipeList;
     }
 
+    public List<Recipe> advancedSearch(String one, String two, String meat, String carbs) {
+        List<meals> filteredMeals = findSearchCase(one,two,meat,carbs);
+        // TODO add case for vegan and vegetarian
+        List<Recipe> filteredRecipes = new ArrayList<>();
+        for (meals meal: filteredMeals) {
+            Recipe recipe = convertMealToRecipe(meal);
+            filteredRecipes.add(recipe);
+        }
+        return filteredRecipes;
+    }
+
+    public List<meals> findSearchCase(String one, String two, String meat, String carbs) {
+        List<meals> filteredMeals = null;
+        if (one.contains("low") && two.contains("low")) {
+            Long param1 = findNutritionalValue(one);
+            Long param2 = findNutritionalValue(two);
+            filteredMeals = recipeRepository.findLowLowCustomSearch(param1,param2,meat,carbs);
+        } else if (one.contains("low") && two.contains("high")) {
+            long param1 = findNutritionalValue(one);
+            long param2 = findNutritionalValue(two);
+            // TODO call to repository for low / high
+        } else if (one.contains("high") && two.contains("low")) {
+            long param1 = findNutritionalValue(two);
+            long param2 = findNutritionalValue(one);
+            // TODO call to low / high
+        } else if (one.contains("high") && two.contains("high")) {
+            long param1 = findNutritionalValue(one);
+            long param2 = findNutritionalValue(two);
+            // TODO call to high / high
+        }
+        return filteredMeals;
+    }
+
+    public Long findNutritionalValue(String param) {
+        long value = 0L;
+        switch (param) {
+            case "low cal":
+            case "high cal":
+                value = 500L;
+                break;
+            case "low fat":
+            case "high fat":
+                value = 10L;
+                break;
+        }
+        return value;
+    }
+
     public Recipe getMealById(Long mealId) {
         meals meal = recipeRepository.findById(mealId).orElse(null);
         return convertMealToRecipe(meal);

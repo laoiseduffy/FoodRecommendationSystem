@@ -23,4 +23,9 @@ public class RecipeController {
     public Recipe getRecipeById(@PathVariable Long id) {
         return recipeWorker.getMealById(id);
     }
+
+    @GetMapping("/recipes/search")
+    public List<Recipe> advancedSearch() {
+        return recipeWorker.advancedSearch("low cal", "low fat", "chicken", "pasta");
+    }
 }

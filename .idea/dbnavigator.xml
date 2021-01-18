@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="a2665c57-af10-457e-ba45-277138457d0e">
-        <schema name="fooddb" object-types="procedure, constraint, view, function, index, column, dataset trigger, table" />
+        <schema name="fooddb" object-types="constraint, view, index, procedure, table, column, function, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
@@ -37,23 +37,31 @@ create]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="a2665c57-af10-457e-ba45-277138457d0e" object-ref="schemas/fooddb/tables/meals" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="a2665c57-af10-457e-ba45-277138457d0e" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="fooddb.meals" active-filter-id="86990942-a894-40c7-901c-206b99943dd3">
+    <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="fooddb.meals" active-filter-id="86e18f06-9f62-4137-bfef-43be57f7bb4d">
       <filter id="e47b7c62-5a83-4e6e-9b9e-9fc58ee55442" name="50" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="protein" operator="&gt;=" value="50" active="true" />
       </filter>
       <filter id="87646757-873d-49bf-9eee-f2f189a5af1a" name="201 AND 500" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="mealid" operator="between" value="201 AND 500" active="true" />
       </filter>
+      <filter id="86e18f06-9f62-4137-bfef-43be57f7bb4d" name="500 &amp; 10 &amp; %chicken%" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="kcal" operator="&gt;" value="500" active="true" />
+        <condition column="fat" operator="&lt;" value="10" active="true" />
+        <condition column="ingredients" operator="like" value="%chicken%" active="true" />
+      </filter>
       <filter id="86990942-a894-40c7-901c-206b99943dd3" name="8909" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="mealid" operator="=" value="8909" active="true" />
+      </filter>
+      <filter id="df138c56-6dfa-4540-88ed-a1e0bd5d022b" name="%vegan% | %vegan% | %vegan%" temporary="false" custom-name="false" type="basic" join-type="OR">
+        <condition column="keywords" operator="like" value="%vegan%" active="true" />
+        <condition column="description" operator="like" value="%vegan%" active="true" />
+        <condition column="title" operator="like" value="%vegan%" active="true" />
       </filter>
     </filter-actions>
     <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="mysql.recipe" active-filter-id="edd67429-8bed-434e-879a-dc1b26789e1f">
