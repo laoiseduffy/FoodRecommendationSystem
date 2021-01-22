@@ -61,6 +61,27 @@ public class meals {
     @Column(name="title")
     private String title;
 
+    public meals(long mealid, long carbs, long cookTime, String description, long fat, long fibre, String image_url, String ingredients, long kcal, String keywords, String method, long prepTime, long protein, double rating, long salt, long saturates, long sugars, String title) {
+        this.mealid = mealid;
+        this.carbs = carbs;
+        this.cookTime = cookTime;
+        this.description = description;
+        this.fat = fat;
+        this.fibre = fibre;
+        this.image_url = image_url;
+        this.ingredients = ingredients;
+        this.kcal = kcal;
+        this.keywords = keywords;
+        this.method = method;
+        this.prepTime = prepTime;
+        this.protein = protein;
+        this.rating = rating;
+        this.salt = salt;
+        this.saturates = saturates;
+        this.sugars = sugars;
+        this.title = title;
+    }
+
     public long getMealid() {
         return mealid;
     }
