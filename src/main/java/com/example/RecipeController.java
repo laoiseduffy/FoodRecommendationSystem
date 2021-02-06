@@ -26,11 +26,6 @@ public class RecipeController {
 
     @GetMapping("/recipes/search")
     public List<Recipe> advancedSearch() {
-        return recipeWorker.advancedSearch("low cal", "low fat");
+        return recipeWorker.advancedSearch("low cal", "low fat", "chicken", "pasta");
     }
-
-//    @GetMapping("/recipes/test")
-//    public List<meals> searchTest() {
-//        return recipeWorker.searchTest();
-//    }
 }
