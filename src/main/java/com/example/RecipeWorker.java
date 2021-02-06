@@ -29,8 +29,8 @@ public class RecipeWorker {
         return recipeList;
     }
 
-    public List<Recipe> advancedSearch(String one, String two) {
-        List<meals> filteredMeals = findSearchCase(one,two);
+    public List<Recipe> advancedSearch(String one, String two, String meat, String carbs) {
+        List<meals> filteredMeals = findSearchCase(one,two,meat,carbs);
         // TODO add case for vegan and vegetarian
         List<Recipe> filteredRecipes = new ArrayList<>();
         for (meals meal: filteredMeals) {
@@ -40,16 +40,24 @@ public class RecipeWorker {
         return filteredRecipes;
     }
 
-    public List<meals> findSearchCase(String one, String two) {
+    public List<meals> findSearchCase(String one, String two, String meat, String carbs) {
         List<meals> filteredMeals = null;
         if (one.contains("low") && two.contains("low")) {
-            filteredMeals = recipeRepository.findLowLowCustomSearch(findNutritionalValue(one),findNutritional(one),findNutritionalValue(two),findNutritional(two));
+            Long param1 = findNutritionalValue(one);
+            Long param2 = findNutritionalValue(two);
+            filteredMeals = recipeRepository.findLowLowCustomSearch(param1,param2,meat,carbs);
         } else if (one.contains("low") && two.contains("high")) {
-            filteredMeals = recipeRepository.findLowHighCustomSearch(findNutritionalValue(one),findNutritional(one),findNutritionalValue(two),findNutritional(two));
+            long param1 = findNutritionalValue(one);
+            long param2 = findNutritionalValue(two);
+            // TODO call to repository for low / high
         } else if (one.contains("high") && two.contains("low")) {
-            filteredMeals = recipeRepository.findLowHighCustomSearch(findNutritionalValue(two),findNutritional(two),findNutritionalValue(one),findNutritional(one));
+            long param1 = findNutritionalValue(two);
+            long param2 = findNutritionalValue(one);
+            // TODO call to low / high
         } else if (one.contains("high") && two.contains("high")) {
-            filteredMeals = recipeRepository.findHighHighCustomSearch(findNutritionalValue(one),findNutritional(one),findNutritionalValue(two),findNutritional(two));
+            long param1 = findNutritionalValue(one);
+            long param2 = findNutritionalValue(two);
+            // TODO call to high / high
         }
         return filteredMeals;
     }
@@ -67,21 +75,6 @@ public class RecipeWorker {
                 break;
         }
         return value;
-    }
-
-    public String findNutritional(String param) {
-        String nutrition = "";
-        switch (param) {
-            case "low cal":
-            case "high cal":
-                nutrition = "kcal";
-                break;
-            case "low fat":
-            case "high fat":
-                nutrition = "fat";
-                break;
-        }
-        return nutrition;
     }
 
     public Recipe getMealById(Long mealId) {
@@ -107,8 +100,8 @@ public class RecipeWorker {
         double proteinPercentage = calculateMacros(meal.getProtein()*4,meal.getKcal());
         double fatPercentage = calculateMacros(meal.getFat()*9, meal.getKcal());
         double carbPercentage = calculateMacros(meal.getCarbs()*4, meal.getKcal());
-        double cookTimeInMinutes = meal.getCookTime()/60.0;
-        double prepTimeInMinutes = meal.getPrepTime()/60.0;
+        double cookTimeInMinutes = meal.getCookTime()/60;
+        double prepTimeInMinutes = meal.getPrepTime()/60;
 
         return new Recipe(meal.getMealid(), meal.getCarbs(), cookTimeInMinutes, meal.getDescription(), meal.getFat(),
                 meal.getFibre(), meal.getImage_url(), ingredients, meal.getKcal(), keywords, method,
@@ -117,15 +110,10 @@ public class RecipeWorker {
     }
 
     public String[] splitIngredients(String ingredients) {
-        String[] ingredientList = new String[0];
-        if (ingredients.length() > 8) {
-            String ingredientString = ingredients.substring(8);
-            ingredientList = ingredientString.split(";");
-            for (int i = 0; i<ingredientList.length; i++) {
-                ingredientList[i] = ingredientList[i].trim();
-            }
-        } else {
-            System.out.println(ingredients);
+        String ingredientString = ingredients.substring(8,ingredients.length());
+        String[] ingredientList = ingredientString.split(";");
+        for (int i = 0; i<ingredientList.length; i++) {
+            ingredientList[i] = ingredientList[i].trim();
         }
         return ingredientList;
     }
