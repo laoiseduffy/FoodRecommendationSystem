@@ -11,10 +11,12 @@ import java.util.Random;
 public class RecipeWorker {
 
     private final RecipeRepository recipeRepository;
+    private final LabelRepository labelRepository;
 
     @Autowired
-    public RecipeWorker(RecipeRepository recipeRepository) {
+    public RecipeWorker(RecipeRepository recipeRepository, LabelRepository labelRepository) {
         this.recipeRepository = recipeRepository;
+        this.labelRepository = labelRepository;
     }
 
     @Autowired
@@ -33,6 +35,12 @@ public class RecipeWorker {
         meals meal = recipeRepository.findById(mealId).orElse(null);
         return convertMealToRecipe(meal);
     }
+
+//    public List<LabelledRecipe> getPreRecipes() {
+//        List<Label> preRecipes = labelRepository.
+//
+//
+//    }
 
     public List<meals> getRandomTenMeals(List<meals> allMeals) {
         Random rand = new Random();

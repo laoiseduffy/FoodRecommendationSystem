@@ -1,3 +1,4 @@
+import com.example.LabelRepository;
 import com.example.RecipeRepository;
 import com.example.RecipeWorker;
 import org.junit.Test;
@@ -10,9 +11,11 @@ public class RecipeWorkerTest {
 
     @Mock
     private RecipeRepository recipeRepository;
+    @Mock
+    private LabelRepository labelRepository;
 
     @InjectMocks
-    private final RecipeWorker recipeWorker = new RecipeWorker(recipeRepository);
+    private final RecipeWorker recipeWorker = new RecipeWorker(recipeRepository, labelRepository);
 
     @Test
     public void splitIngredientsTest() {

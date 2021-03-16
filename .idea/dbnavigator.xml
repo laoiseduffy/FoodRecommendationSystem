@@ -11,8 +11,8 @@
       <quote-values-containing-separator value="true" />
       <quote-all-values value="false" />
       <value-separator value="" />
-      <file-name value="meals.xls" />
-      <file-location value="$PROJECT_DIR$/../CSC3002" />
+      <file-name value="901-2000.xls" />
+      <file-location value="$PROJECT_DIR$/../CSC3002/Data" />
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="a2665c57-af10-457e-ba45-277138457d0e">
-        <schema name="fooddb" object-types="procedure, constraint, view, function, index, column, dataset trigger, table" />
+        <schema name="fooddb" object-types="procedure, function, table, column, index, dataset trigger, view, constraint" />
       </connection>
     </loaded-nodes>
   </component>
@@ -35,30 +35,41 @@
 
 create]]></console>
     </connection>
+    <connection id="982d8a15-2362-4acd-a02d-244c3b729111">
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
+    </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="a2665c57-af10-457e-ba45-277138457d0e" object-ref="schemas/fooddb/tables/meals" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="a2665c57-af10-457e-ba45-277138457d0e" />
+    <connection id="982d8a15-2362-4acd-a02d-244c3b729111" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="fooddb.meals" active-filter-id="86990942-a894-40c7-901c-206b99943dd3">
+    <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="fooddb.meals" active-filter-id="87646757-873d-49bf-9eee-f2f189a5af1a">
       <filter id="e47b7c62-5a83-4e6e-9b9e-9fc58ee55442" name="50" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="protein" operator="&gt;=" value="50" active="true" />
       </filter>
-      <filter id="87646757-873d-49bf-9eee-f2f189a5af1a" name="201 AND 500" temporary="false" custom-name="false" type="basic" join-type="AND">
-        <condition column="mealid" operator="between" value="201 AND 500" active="true" />
+      <filter id="87646757-873d-49bf-9eee-f2f189a5af1a" name="901 AND 2000" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="mealid" operator="between" value="901 AND 2000" active="true" />
       </filter>
       <filter id="86990942-a894-40c7-901c-206b99943dd3" name="8909" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="mealid" operator="=" value="8909" active="true" />
+      </filter>
+      <filter id="1387b303-b338-4b20-9489-fa1a6a5e6367" name="Filter" temporary="false" custom-name="false" type="custom">
+        <condition>mealid = 3 OR &lt;br&gt;mealid = 9 OR &lt;br&gt;mealid = 13 OR &lt;br&gt;mealid = 15 OR &lt;br&gt;mealid = 20 OR &lt;br&gt;mealid = 25 OR &lt;br&gt;mealid = 32 OR &lt;br&gt;mealid = 37 OR &lt;br&gt;mealid = 38 OR &lt;br&gt;mealid = 41 OR &lt;br&gt;mealid = 43 OR &lt;br&gt;mealid = 73 OR &lt;br&gt;mealid = 74 OR &lt;br&gt;mealid = 76 OR &lt;br&gt;mealid = 77 OR &lt;br&gt;mealid = 78 OR &lt;br&gt;mealid = 80 OR &lt;br&gt;mealid = 83 OR &lt;br&gt;mealid = 84 OR &lt;br&gt;mealid = 85 OR &lt;br&gt;mealid = 94 OR &lt;br&gt;mealid = 99 OR &lt;br&gt;mealid = 104 OR &lt;br&gt;mealid = 119 OR &lt;br&gt;mealid = 120 OR &lt;br&gt;mealid = 121 OR &lt;br&gt;mealid = 123 OR &lt;br&gt;mealid = 129 OR &lt;br&gt;mealid = 130 OR &lt;br&gt;mealid = 135 OR &lt;br&gt;mealid = 140 OR &lt;br&gt;mealid = 149 OR &lt;br&gt;mealid = 155 OR &lt;br&gt;mealid = 160 OR &lt;br&gt;mealid = 161 OR &lt;br&gt;mealid = 163 OR &lt;br&gt;mealid = 167 OR &lt;br&gt;mealid = 168 OR &lt;br&gt;mealid = 186 OR &lt;br&gt;mealid = 189 OR &lt;br&gt;mealid = 195 OR &lt;br&gt;mealid = 202 OR &lt;br&gt;mealid = 205 OR &lt;br&gt;mealid = 207 OR &lt;br&gt;mealid = 213 OR &lt;br&gt;mealid = 221 OR &lt;br&gt;mealid = 226 OR &lt;br&gt;mealid = 227 OR &lt;br&gt;mealid = 233 OR &lt;br&gt;mealid = 238 OR &lt;br&gt;mealid = 243 OR &lt;br&gt;mealid = 251 OR &lt;br&gt;mealid = 263 OR &lt;br&gt;mealid = 267 OR &lt;br&gt;mealid = 269 OR &lt;br&gt;mealid = 276 OR &lt;br&gt;mealid = 280 OR &lt;br&gt;mealid = 282 OR &lt;br&gt;mealid = 286 OR &lt;br&gt;mealid = 291 OR &lt;br&gt;mealid = 302 OR &lt;br&gt;mealid = 303 OR &lt;br&gt;mealid = 306 OR &lt;br&gt;mealid = 308 OR &lt;br&gt;mealid = 313 OR &lt;br&gt;mealid = 326 OR &lt;br&gt;mealid = 334 OR &lt;br&gt;mealid = 336 OR &lt;br&gt;mealid = 337 OR &lt;br&gt;mealid = 341 OR &lt;br&gt;mealid = 344 OR &lt;br&gt;mealid = 348 OR &lt;br&gt;mealid = 354 OR &lt;br&gt;mealid = 356 OR &lt;br&gt;mealid = 372 OR &lt;br&gt;mealid = 391 OR &lt;br&gt;mealid = 398 OR &lt;br&gt;mealid = 399 OR &lt;br&gt;mealid = 402 OR &lt;br&gt;mealid = 407 OR &lt;br&gt;mealid = 419 OR &lt;br&gt;mealid = 427 OR &lt;br&gt;mealid = 436 OR &lt;br&gt;mealid = 441 OR &lt;br&gt;mealid = 448 OR &lt;br&gt;mealid = 450 OR &lt;br&gt;mealid = 453 OR &lt;br&gt;mealid = 455 OR &lt;br&gt;mealid = 457 OR &lt;br&gt;mealid = 458 OR &lt;br&gt;mealid = 460 OR &lt;br&gt;mealid = 467 OR &lt;br&gt;mealid = 473 OR &lt;br&gt;mealid = 475 OR &lt;br&gt;mealid = 478 OR &lt;br&gt;mealid = 483 OR &lt;br&gt;mealid = 485 OR &lt;br&gt;mealid = 490 OR &lt;br&gt;mealid = 496 OR &lt;br&gt;mealid = 499</condition>
       </filter>
     </filter-actions>
     <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="mysql.recipe" active-filter-id="edd67429-8bed-434e-879a-dc1b26789e1f">
       <filter id="edd67429-8bed-434e-879a-dc1b26789e1f" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
+    <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="fooddb.labelledRecipes" active-filter-id="EMPTY_FILTER">
+      <filter id="ae82cf67-bdd4-4f3e-bcad-548cf06cdb4d" name="3" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="mealid" operator="=" value="3" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="fooddb.user" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -101,8 +112,91 @@ create]]></console>
           <port value="8889" />
           <database value="fooddb" />
           <type value="USER_PASSWORD" />
-          <user value="root" />
-          <deprecated-pwd value="cm9vdA==" />
+          <user value="foodadmin" />
+          <deprecated-pwd value="Zm9vZDAx" />
+        </database>
+        <properties>
+          <auto-commit value="false" />
+        </properties>
+        <ssh-settings>
+          <active value="false" />
+          <proxy-host value="" />
+          <proxy-port value="22" />
+          <proxy-user value="" />
+          <deprecated-proxy-pwd value="" />
+          <auth-type value="PASSWORD" />
+          <key-file value="" />
+          <key-passphrase value="" />
+        </ssh-settings>
+        <ssl-settings>
+          <active value="false" />
+          <certificate-authority-file value="" />
+          <client-certificate-file value="" />
+          <client-key-file value="" />
+        </ssl-settings>
+        <details>
+          <charset value="UTF-8" />
+          <session-management value="true" />
+          <ddl-file-binding value="true" />
+          <database-logging value="false" />
+          <connect-automatically value="true" />
+          <restore-workspace value="true" />
+          <restore-workspace-deep value="true" />
+          <environment-type value="default" />
+          <idle-time-to-disconnect value="30" />
+          <idle-time-to-disconnect-pool value="5" />
+          <credential-expiry-time value="10" />
+          <max-connection-pool-size value="7" />
+          <alternative-statement-delimiter value="" />
+        </details>
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
+          <object-type-filter use-master-settings="true">
+            <object-type name="SCHEMA" enabled="true" />
+            <object-type name="USER" enabled="true" />
+            <object-type name="ROLE" enabled="true" />
+            <object-type name="PRIVILEGE" enabled="true" />
+            <object-type name="CHARSET" enabled="true" />
+            <object-type name="TABLE" enabled="true" />
+            <object-type name="VIEW" enabled="true" />
+            <object-type name="MATERIALIZED_VIEW" enabled="true" />
+            <object-type name="NESTED_TABLE" enabled="true" />
+            <object-type name="COLUMN" enabled="true" />
+            <object-type name="INDEX" enabled="true" />
+            <object-type name="CONSTRAINT" enabled="true" />
+            <object-type name="DATASET_TRIGGER" enabled="true" />
+            <object-type name="DATABASE_TRIGGER" enabled="true" />
+            <object-type name="SYNONYM" enabled="true" />
+            <object-type name="SEQUENCE" enabled="true" />
+            <object-type name="PROCEDURE" enabled="true" />
+            <object-type name="FUNCTION" enabled="true" />
+            <object-type name="PACKAGE" enabled="true" />
+            <object-type name="TYPE" enabled="true" />
+            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
+            <object-type name="ARGUMENT" enabled="true" />
+            <object-type name="DIMENSION" enabled="true" />
+            <object-type name="CLUSTER" enabled="true" />
+            <object-type name="DBLINK" enabled="true" />
+          </object-type-filter>
+          <object-name-filters />
+        </object-filters>
+      </connection>
+      <connection id="982d8a15-2362-4acd-a02d-244c3b729111" active="true">
+        <database>
+          <name value="Connection" />
+          <description value="" />
+          <database-type value="MYSQL" />
+          <config-type value="BASIC" />
+          <database-version value="9999.0" />
+          <driver-source value="BUILTIN" />
+          <driver-library value="" />
+          <driver value="" />
+          <url-type value="DATABASE" />
+          <host value="localhost" />
+          <port value="3306" />
+          <database value="database" />
+          <type value="USER_PASSWORD" />
+          <user value="" />
+          <deprecated-pwd value="" />
         </database>
         <properties>
           <auto-commit value="false" />
