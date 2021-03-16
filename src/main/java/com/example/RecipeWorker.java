@@ -36,11 +36,49 @@ public class RecipeWorker {
         return convertMealToRecipe(meal);
     }
 
-//    public List<LabelledRecipe> getPreRecipes() {
-//        List<Label> preRecipes = labelRepository.
-//
-//
-//    }
+    public List<Label> getPreRecipes() {
+        List<Label> recipeList = new ArrayList<>();
+        List<LabelledRecipe> preRecipes = labelRepository.findAllByPre(Boolean.TRUE);
+        for (LabelledRecipe recipe: preRecipes) {
+            Label label = convertLabelledRecipeToLabel(recipe);
+            recipeList.add(label);
+        }
+        return recipeList;
+    }
+
+    public List<Label> getPostRecipes() {
+        List<Label> recipeList = new ArrayList<>();
+        List<LabelledRecipe> postRecipes = labelRepository.findAllByPost(Boolean.TRUE);
+        for (LabelledRecipe recipe: postRecipes) {
+            Label label = convertLabelledRecipeToLabel(recipe);
+            recipeList.add(label);
+        }
+        return recipeList;
+    }
+
+    public List<Label> getRecoveryRecipes() {
+        List<Label> recipeList = new ArrayList<>();
+        List<LabelledRecipe> recoveryRecipes = labelRepository.findAllByRecovery(Boolean.TRUE);
+        for (LabelledRecipe recipe: recoveryRecipes) {
+            Label label = convertLabelledRecipeToLabel(recipe);
+            recipeList.add(label);
+        }
+        return recipeList;
+    }
+
+    public List<Label> getHealthyRecipes() {
+        List<Label> recipeList = new ArrayList<>();
+        List<LabelledRecipe> healthyRecipes = labelRepository.findAllByHealthy(Boolean.TRUE);
+        for (LabelledRecipe recipe: healthyRecipes) {
+            Label label = convertLabelledRecipeToLabel(recipe);
+            recipeList.add(label);
+        }
+        return recipeList;
+    }
+
+    public Label convertLabelledRecipeToLabel(LabelledRecipe preRecipe) {
+        return new Label(preRecipe.getMealid(), preRecipe.isPre(), preRecipe.isPost(), preRecipe.isRecovery(), preRecipe.isHealthy());
+    }
 
     public List<meals> getRandomTenMeals(List<meals> allMeals) {
         Random rand = new Random();

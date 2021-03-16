@@ -23,4 +23,9 @@ public class RecipeController {
     public Recipe getRecipeById(@PathVariable Long id) {
         return recipeWorker.getMealById(id);
     }
+
+    @GetMapping("/prerecipes")
+    public List<Label> getPreRecipes() {
+        return  recipeWorker.getPreRecipes();
+    }
 }
