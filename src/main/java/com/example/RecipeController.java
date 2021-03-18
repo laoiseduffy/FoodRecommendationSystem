@@ -25,7 +25,22 @@ public class RecipeController {
     }
 
     @GetMapping("/prerecipes")
-    public List<Label> getPreRecipes() {
+    public List<Recipe> getPreRecipes() {
         return  recipeWorker.getPreRecipes();
+    }
+
+    @GetMapping("/postrecipes")
+    public List<Recipe> getPostRecipes() {
+        return  recipeWorker.getPostRecipes();
+    }
+
+    @GetMapping("/recoveryrecipes")
+    public List<Recipe> getRecoveryRecipes() {
+        return  recipeWorker.getRecoveryRecipes();
+    }
+
+    @GetMapping("/healthyrecipes")
+    public List<Recipe> getHealthyRecipes() {
+        return  recipeWorker.getHealthyRecipes();
     }
 }

@@ -36,44 +36,64 @@ public class RecipeWorker {
         return convertMealToRecipe(meal);
     }
 
-    public List<Label> getPreRecipes() {
+    public List<Recipe> getPreRecipes() {
         List<Label> recipeList = new ArrayList<>();
         List<LabelledRecipe> preRecipes = labelRepository.findAllByPre(Boolean.TRUE);
         for (LabelledRecipe recipe: preRecipes) {
             Label label = convertLabelledRecipeToLabel(recipe);
             recipeList.add(label);
         }
-        return recipeList;
+        List<Integer> randomIDs = getTenRandomMealids(recipeList);
+        List<Recipe> recipes = new ArrayList<>();
+        for (int id: randomIDs) {
+            recipes.add(getMealById((long) id));
+        }
+        return recipes;
     }
 
-    public List<Label> getPostRecipes() {
+    public List<Recipe> getPostRecipes() {
         List<Label> recipeList = new ArrayList<>();
         List<LabelledRecipe> postRecipes = labelRepository.findAllByPost(Boolean.TRUE);
         for (LabelledRecipe recipe: postRecipes) {
             Label label = convertLabelledRecipeToLabel(recipe);
             recipeList.add(label);
         }
-        return recipeList;
+        List<Integer> randomIDs = getTenRandomMealids(recipeList);
+        List<Recipe> recipes = new ArrayList<>();
+        for (int id: randomIDs) {
+            recipes.add(getMealById((long) id));
+        }
+        return recipes;
     }
 
-    public List<Label> getRecoveryRecipes() {
+    public List<Recipe> getRecoveryRecipes() {
         List<Label> recipeList = new ArrayList<>();
         List<LabelledRecipe> recoveryRecipes = labelRepository.findAllByRecovery(Boolean.TRUE);
         for (LabelledRecipe recipe: recoveryRecipes) {
             Label label = convertLabelledRecipeToLabel(recipe);
             recipeList.add(label);
         }
-        return recipeList;
+        List<Integer> randomIDs = getTenRandomMealids(recipeList);
+        List<Recipe> recipes = new ArrayList<>();
+        for (int id: randomIDs) {
+            recipes.add(getMealById((long) id));
+        }
+        return recipes;
     }
 
-    public List<Label> getHealthyRecipes() {
+    public List<Recipe> getHealthyRecipes() {
         List<Label> recipeList = new ArrayList<>();
         List<LabelledRecipe> healthyRecipes = labelRepository.findAllByHealthy(Boolean.TRUE);
         for (LabelledRecipe recipe: healthyRecipes) {
             Label label = convertLabelledRecipeToLabel(recipe);
             recipeList.add(label);
         }
-        return recipeList;
+        List<Integer> randomIDs = getTenRandomMealids(recipeList);
+        List<Recipe> recipes = new ArrayList<>();
+        for (int id: randomIDs) {
+            recipes.add(getMealById((long) id));
+        }
+        return recipes;
     }
 
     public Label convertLabelledRecipeToLabel(LabelledRecipe preRecipe) {
@@ -89,6 +109,17 @@ public class RecipeWorker {
             randomMeals.add(m);
         }
         return randomMeals;
+    }
+
+    public List<Integer> getTenRandomMealids(List<Label> recipes) {
+        Random rand = new Random();
+        List<Integer> randomIDs = new ArrayList<>();
+        for (int i =0; i < 10; i++) {
+            int randInt = rand.nextInt(recipes.size());
+            Label l = recipes.get(randInt);
+            randomIDs.add((int)l.getMealid());
+        }
+        return randomIDs;
     }
 
     public Recipe convertMealToRecipe(meals meal) {

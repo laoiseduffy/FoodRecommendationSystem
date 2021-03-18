@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="a2665c57-af10-457e-ba45-277138457d0e">
-        <schema name="fooddb" object-types="column, constraint, dataset trigger, table, view, function, index, procedure" />
+        <schema name="fooddb" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
