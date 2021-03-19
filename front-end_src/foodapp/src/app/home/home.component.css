@@ -1,0 +1,38 @@
+.card-data {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 22%;
+  height: auto;
+  background-color: #E3EEF1;
+  margin: 10px;
+  color: black;
+  text-align: left;
+  vertical-align: middle;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card-img-top {
+  background-color: #FFFFFF;
+}
+
+.card-title {
+  color: #585858;
+}
+
+.card-description {
+  color: #848484;
+}
+
+.card-footer {
+  text-align: right;
+}
+
+.img {
+  float:right;
+}

@@ -13,11 +13,11 @@ export class RecipeService {
   selectedRecipe: Recipe;
 
   constructor(private http: HttpClient) {
-    this.recipeUrl = 'http://localhost:8080/recipes';
+    this.recipeUrl = 'http://localhost:8080';
   }
 
   public findAll(): Observable<Recipe[]> {
-    this.observableRecipeList = this.http.get<Recipe[]>(this.recipeUrl);
+    this.observableRecipeList = this.http.get<Recipe[]>(this.recipeUrl + '/recipes');
     console.log("Fetching from db");
     console.log(this.observableRecipeList);
     return this.observableRecipeList;
@@ -28,8 +28,12 @@ export class RecipeService {
   }
 
   public findRecipeById(mealId: number): Observable<Recipe> {
-    console.log(this.recipeUrl + `/${mealId}`);
-    return this.http.get<Recipe>(this.recipeUrl + `/${mealId}`);
+    console.log(this.recipeUrl + `/recipes/${mealId}`);
+    return this.http.get<Recipe>(this.recipeUrl + `/recipes/${mealId}`);
+  }
+
+  public getPreRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipeUrl + '/prerecipes');
   }
 
   public save(recipe: Recipe) {
