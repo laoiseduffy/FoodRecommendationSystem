@@ -9,6 +9,7 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { RecipeService } from './service/recipe-service.service';
 import { RecipeInfoComponent } from './recipe-info/recipe-info.component';
 import { HomeComponent } from './home/home.component';
+import { PreComponent } from './pre/pre.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeComponent } from './home/home.component';
     RecipeListComponent,
     RecipeFormComponent,
     RecipeInfoComponent,
-    HomeComponent
+    HomeComponent,
+    PreComponent
   ],
   imports: [
     BrowserModule,
