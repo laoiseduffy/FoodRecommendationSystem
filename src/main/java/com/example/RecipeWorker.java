@@ -36,6 +36,16 @@ public class RecipeWorker {
         return convertMealToRecipe(meal);
     }
 
+    public List<Recipe> getByKeyword(String word) {
+        List<meals> allMeals = recipeRepository.findAllByKeyword(word);
+        List<Recipe> recipeList = new ArrayList<>();
+        for (meals meal: allMeals) {
+            Recipe recipe = convertMealToRecipe(meal);
+            recipeList.add(recipe);
+        }
+        return recipeList;
+    }
+
     public List<Recipe> getPreRecipes() {
         List<Label> recipeList = new ArrayList<>();
         List<LabelledRecipe> preRecipes = labelRepository.findAllByPre(Boolean.TRUE);

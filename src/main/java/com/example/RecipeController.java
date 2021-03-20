@@ -41,6 +41,11 @@ public class RecipeController {
 
     @GetMapping("/healthyrecipes")
     public List<Recipe> getHealthyRecipes() {
-        return  recipeWorker.getHealthyRecipes();
+        return recipeWorker.getHealthyRecipes();
+    }
+
+    @GetMapping("/keyword/{word}")
+    public List<Recipe> getByKeyword(@PathVariable String word) {
+        return recipeWorker.getByKeyword(word);
     }
 }
