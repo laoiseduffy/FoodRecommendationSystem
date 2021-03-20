@@ -36,6 +36,18 @@ export class RecipeService {
     return this.http.get<Recipe[]>(this.recipeUrl + '/prerecipes');
   }
 
+  public getPostRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipeUrl + '/postrecipes');
+  }
+
+  public getRecoveryRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipeUrl + '/recoveryrecipes');
+  }
+
+  public getHealthyRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipeUrl + '/healthyrecipes');
+  }
+
   public save(recipe: Recipe) {
     return this.http.post<Recipe>(this.recipeUrl, recipe);
   }

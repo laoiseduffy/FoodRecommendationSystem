@@ -3,19 +3,19 @@ import { RecipeService } from '../service/recipe-service.service';
 import { Recipe } from '../model/meal';
 
 @Component({
-  selector: 'app-pre',
-  templateUrl: './pre.component.html',
-  styleUrls: ['./pre.component.css']
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.css']
 })
-export class PreComponent implements OnInit {
+export class PostComponent implements OnInit {
 
-  preRecipes: Recipe[];
+  postRecipes: Recipe[];
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-    this.recipeService.getPreRecipes().subscribe(data => {
-      this.preRecipes = data;
+    this.recipeService.getPostRecipes().subscribe(data => {
+      this.postRecipes = data;
     });
   }
 

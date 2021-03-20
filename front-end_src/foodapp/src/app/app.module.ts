@@ -10,6 +10,9 @@ import { RecipeService } from './service/recipe-service.service';
 import { RecipeInfoComponent } from './recipe-info/recipe-info.component';
 import { HomeComponent } from './home/home.component';
 import { PreComponent } from './pre/pre.component';
+import { PostComponent } from './post/post.component';
+import { RecoveryComponent } from './recovery/recovery.component';
+import { HealthyComponent } from './healthy/healthy.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { PreComponent } from './pre/pre.component';
     RecipeFormComponent,
     RecipeInfoComponent,
     HomeComponent,
-    PreComponent
+    PreComponent,
+    PostComponent,
+    RecoveryComponent,
+    HealthyComponent
   ],
   imports: [
     BrowserModule,

@@ -3,11 +3,11 @@ import { RecipeService } from '../service/recipe-service.service';
 import { Recipe } from '../model/meal';
 
 @Component({
-  selector: 'app-pre',
-  templateUrl: './pre.component.html',
-  styleUrls: ['./pre.component.css']
+  selector: 'app-healthy',
+  templateUrl: './healthy.component.html',
+  styleUrls: ['./healthy.component.css']
 })
-export class PreComponent implements OnInit {
+export class HealthyComponent implements OnInit {
 
   preRecipes: Recipe[];
 

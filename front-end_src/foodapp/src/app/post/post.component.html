@@ -1,12 +1,15 @@
-
-<h4 class="list-header">Top 10 Recommendations</h4>
-
-<div class="spinner-border"></div>
+<div class="row">
+  <div class="col">
+    <h2 class="list-header">Post-exercise Recipes</h2>
+  </div>
+  <div class="col">
+    <button class="button" (click)="reload()" >Reload</button>
+  </div>
+</div>
 
 <div class="row">
-
   <div class="card-data">
-    <div class="card" *ngFor="let recipe of recipes; let i=index">
+    <div class="card" *ngFor="let recipe of postRecipes; let i=index">
       <img class="card-img-top" src="{{recipe.image_url}}" alt="Image not found">
       <div class="card-body">
         <h5 class="card-title">{{ recipe.title }}</h5>
@@ -17,5 +20,5 @@
       </div>
     </div>
   </div>
-
 </div>
+

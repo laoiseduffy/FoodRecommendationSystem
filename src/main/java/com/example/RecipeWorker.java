@@ -22,9 +22,9 @@ public class RecipeWorker {
     @Autowired
     public List<Recipe> getRecommendations() {
         List<meals> allMeals = (List<meals>) recipeRepository.findAll();
-        List<meals> randomMeals = getRandomTenMeals(allMeals);
+//        List<meals> randomMeals = getRandomTenMeals(allMeals);
         List<Recipe> recipeList = new ArrayList<>();
-        for (meals meal: randomMeals) {
+        for (meals meal: allMeals) {
             Recipe recipe = convertMealToRecipe(meal);
             recipeList.add(recipe);
         }
@@ -139,10 +139,15 @@ public class RecipeWorker {
     }
 
     public String[] splitIngredients(String ingredients) {
-        String ingredientString = ingredients.substring(8,ingredients.length());
-        String[] ingredientList = ingredientString.split(";");
-        for (int i = 0; i<ingredientList.length; i++) {
-            ingredientList[i] = ingredientList[i].trim();
+        String[] ingredientList;
+        if (!ingredients.isEmpty() && ingredients.length()>7) {
+            String ingredientString = ingredients.substring(8,ingredients.length());
+            ingredientList = ingredientString.split(";");
+            for (int i = 0; i<ingredientList.length; i++) {
+                ingredientList[i] = ingredientList[i].trim();
+            }
+        } else {
+            ingredientList = new String[0];
         }
         return ingredientList;
     }
