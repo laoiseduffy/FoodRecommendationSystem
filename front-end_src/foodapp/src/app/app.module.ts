@@ -13,6 +13,7 @@ import { PreComponent } from './pre/pre.component';
 import { PostComponent } from './post/post.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { HealthyComponent } from './healthy/healthy.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HealthyComponent } from './healthy/healthy.component';
     PreComponent,
     PostComponent,
     RecoveryComponent,
-    HealthyComponent
+    HealthyComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { PreComponent } from './pre/pre.component';
 import { PostComponent } from './post/post.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { HealthyComponent } from './healthy/healthy.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   { path: 'recipes', component: RecipeListComponent, },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'pre', component: PreComponent },
   { path: 'post', component: PostComponent },
   { path: 'recovery', component: RecoveryComponent },
-  { path: 'healthy', component: HealthyComponent }
+  { path: 'healthy', component: HealthyComponent },
+  { path: 'search', component: SearchComponent }
 ];
 
 @NgModule({

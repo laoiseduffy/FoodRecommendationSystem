@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface RecipeRepository extends CrudRepository<meals, Long> {
 
-    @Query(value = "SELECT * FROM fooddb.meals WHERE ingredients like %:word% AND keywords like %:word%", nativeQuery = true)
+    @Query(value = "SELECT * FROM fooddb.meals WHERE ingredients like %:word% OR keywords like %:word%", nativeQuery = true)
     List<meals> findAllByKeyword(@Param("word") String word);
 
 }

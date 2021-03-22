@@ -49,7 +49,7 @@ export class RecipeService {
   }
 
   public getByKeyword(word: string): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.recipeUrl + '/keyword/${word}');
+    return this.http.get<Recipe[]>(this.recipeUrl + `/keyword/${word}`);
   }
 
   public save(recipe: Recipe) {
