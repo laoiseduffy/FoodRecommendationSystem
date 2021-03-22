@@ -48,6 +48,10 @@ export class RecipeService {
     return this.http.get<Recipe[]>(this.recipeUrl + '/healthyrecipes');
   }
 
+  public getByKeyword(word: string): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipeUrl + '/keyword/${word}');
+  }
+
   public save(recipe: Recipe) {
     return this.http.post<Recipe>(this.recipeUrl, recipe);
   }
