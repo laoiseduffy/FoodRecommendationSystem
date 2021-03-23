@@ -20,4 +20,8 @@ export class Recipe {
     proteinPercentage: number;
     carbsPercentage: number;
     fatPercentage: number;
+    pre: boolean;
+    post: boolean;
+    recovery: boolean;
+    healthy: boolean;
 }

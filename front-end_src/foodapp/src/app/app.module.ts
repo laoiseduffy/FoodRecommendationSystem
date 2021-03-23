@@ -4,17 +4,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { RecipeListComponent } from './recipe-list/recipe-list.component';
-import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { RecipeService } from './service/recipe-service.service';
 import { RecipeInfoComponent } from './recipe-info/recipe-info.component';
+import { HomeComponent } from './home/home.component';
+import { PreComponent } from './pre/pre.component';
+import { PostComponent } from './post/post.component';
+import { RecoveryComponent } from './recovery/recovery.component';
+import { HealthyComponent } from './healthy/healthy.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipeListComponent,
-    RecipeFormComponent,
-    RecipeInfoComponent
+    RecipeInfoComponent,
+    HomeComponent,
+    PreComponent,
+    PostComponent,
+    RecoveryComponent,
+    HealthyComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

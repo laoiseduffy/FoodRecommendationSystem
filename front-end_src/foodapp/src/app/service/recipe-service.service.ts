@@ -13,26 +13,32 @@ export class RecipeService {
   selectedRecipe: Recipe;
 
   constructor(private http: HttpClient) {
-    this.recipeUrl = 'http://localhost:8080/recipes';
-  }
-
-  public findAll(): Observable<Recipe[]> {
-    this.observableRecipeList = this.http.get<Recipe[]>(this.recipeUrl);
-    console.log("Fetching from db");
-    console.log(this.observableRecipeList);
-    return this.observableRecipeList;
-  }
-
-  public getRecipeList(): Observable<Recipe[]> {
-    return this.observableRecipeList;
+    this.recipeUrl = 'http://localhost:8080';
   }
 
   public findRecipeById(mealId: number): Observable<Recipe> {
-    console.log(this.recipeUrl + `/${mealId}`);
-    return this.http.get<Recipe>(this.recipeUrl + `/${mealId}`);
+    console.log(this.recipeUrl + `/recipes/${mealId}`);
+    return this.http.get<Recipe>(this.recipeUrl + `/recipes/${mealId}`);
   }
 
-  public save(recipe: Recipe) {
-    return this.http.post<Recipe>(this.recipeUrl, recipe);
+  public getPreRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipeUrl + '/prerecipes');
   }
+
+  public getPostRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipeUrl + '/postrecipes');
+  }
+
+  public getRecoveryRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipeUrl + '/recoveryrecipes');
+  }
+
+  public getHealthyRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipeUrl + '/healthyrecipes');
+  }
+
+  public getByKeyword(word: string): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipeUrl + `/keyword/${word}`);
+  }
+
 }

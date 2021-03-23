@@ -23,4 +23,29 @@ public class RecipeController {
     public Recipe getRecipeById(@PathVariable Long id) {
         return recipeWorker.getMealById(id);
     }
+
+    @GetMapping("/prerecipes")
+    public List<Recipe> getPreRecipes() {
+        return  recipeWorker.getPreRecipes();
+    }
+
+    @GetMapping("/postrecipes")
+    public List<Recipe> getPostRecipes() {
+        return  recipeWorker.getPostRecipes();
+    }
+
+    @GetMapping("/recoveryrecipes")
+    public List<Recipe> getRecoveryRecipes() {
+        return  recipeWorker.getRecoveryRecipes();
+    }
+
+    @GetMapping("/healthyrecipes")
+    public List<Recipe> getHealthyRecipes() {
+        return recipeWorker.getHealthyRecipes();
+    }
+
+    @GetMapping("/keyword/{word}")
+    public List<Recipe> getByKeyword(@PathVariable String word) {
+        return recipeWorker.getByKeyword(word);
+    }
 }

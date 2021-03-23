@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col">
+    <h2 class="list-header">Everyday Healthy Recipes</h2>
+  </div>
+  <div class="col">
+    <button class="button" (click)="reload()" >Reload</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="card-data">
+    <div class="card" *ngFor="let recipe of preRecipes; let i=index">
+      <img class="card-img-top" src="{{recipe.image_url}}" alt="Image not found">
+      <div class="card-body">
+        <h5 class="card-title">{{ recipe.title }}</h5>
+        <h6 class="card-description">{{ recipe.description }}</h6>
+      </div>
+      <div class="card-footer">
+        <a routerLink="/recipe-info/{{recipe.mealid}}" class="card-link">More Info</a>
+      </div>
+    </div>
+  </div>
+</div>
+

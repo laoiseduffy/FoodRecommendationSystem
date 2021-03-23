@@ -5,24 +5,27 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Component
 public class RecipeWorker {
 
     private final RecipeRepository recipeRepository;
+    private final LabelRepository labelRepository;
 
     @Autowired
-    public RecipeWorker(RecipeRepository recipeRepository) {
+    public RecipeWorker(RecipeRepository recipeRepository, LabelRepository labelRepository) {
         this.recipeRepository = recipeRepository;
+        this.labelRepository = labelRepository;
     }
 
     @Autowired
     public List<Recipe> getRecommendations() {
         List<meals> allMeals = (List<meals>) recipeRepository.findAll();
-        List<meals> randomMeals = getRandomTenMeals(allMeals);
+//        List<meals> randomMeals = getRandomTenMeals(allMeals);
         List<Recipe> recipeList = new ArrayList<>();
-        for (meals meal: randomMeals) {
+        for (meals meal: allMeals) {
             Recipe recipe = convertMealToRecipe(meal);
             recipeList.add(recipe);
         }
@@ -32,6 +35,80 @@ public class RecipeWorker {
     public Recipe getMealById(Long mealId) {
         meals meal = recipeRepository.findById(mealId).orElse(null);
         return convertMealToRecipe(meal);
+    }
+
+    public List<Recipe> getByKeyword(String word) {
+        List<meals> allMeals = recipeRepository.findAllByKeyword(word);
+        List<Recipe> recipeList = new ArrayList<>();
+        for (meals meal: allMeals) {
+            Recipe recipe = convertMealToRecipe(meal);
+            recipeList.add(recipe);
+        }
+        return recipeList;
+    }
+
+    public List<Recipe> getPreRecipes() {
+        List<Label> recipeList = new ArrayList<>();
+        List<LabelledRecipe> preRecipes = labelRepository.findAllByPre(Boolean.TRUE);
+        for (LabelledRecipe recipe: preRecipes) {
+            Label label = convertLabelledRecipeToLabel(recipe);
+            recipeList.add(label);
+        }
+        List<Integer> randomIDs = getTenRandomMealids(recipeList);
+        List<Recipe> recipes = new ArrayList<>();
+        for (int id: randomIDs) {
+            recipes.add(getMealById((long) id));
+        }
+        return recipes;
+    }
+
+    public List<Recipe> getPostRecipes() {
+        List<Label> recipeList = new ArrayList<>();
+        List<LabelledRecipe> postRecipes = labelRepository.findAllByPost(Boolean.TRUE);
+        for (LabelledRecipe recipe: postRecipes) {
+            Label label = convertLabelledRecipeToLabel(recipe);
+            recipeList.add(label);
+        }
+        List<Integer> randomIDs = getTenRandomMealids(recipeList);
+        List<Recipe> recipes = new ArrayList<>();
+        for (int id: randomIDs) {
+            recipes.add(getMealById((long) id));
+        }
+        return recipes;
+    }
+
+    public List<Recipe> getRecoveryRecipes() {
+        List<Label> recipeList = new ArrayList<>();
+        List<LabelledRecipe> recoveryRecipes = labelRepository.findAllByRecovery(Boolean.TRUE);
+        for (LabelledRecipe recipe: recoveryRecipes) {
+            Label label = convertLabelledRecipeToLabel(recipe);
+            recipeList.add(label);
+        }
+        List<Integer> randomIDs = getTenRandomMealids(recipeList);
+        List<Recipe> recipes = new ArrayList<>();
+        for (int id: randomIDs) {
+            recipes.add(getMealById((long) id));
+        }
+        return recipes;
+    }
+
+    public List<Recipe> getHealthyRecipes() {
+        List<Label> recipeList = new ArrayList<>();
+        List<LabelledRecipe> healthyRecipes = labelRepository.findAllByHealthy(Boolean.TRUE);
+        for (LabelledRecipe recipe: healthyRecipes) {
+            Label label = convertLabelledRecipeToLabel(recipe);
+            recipeList.add(label);
+        }
+        List<Integer> randomIDs = getTenRandomMealids(recipeList);
+        List<Recipe> recipes = new ArrayList<>();
+        for (int id: randomIDs) {
+            recipes.add(getMealById((long) id));
+        }
+        return recipes;
+    }
+
+    public Label convertLabelledRecipeToLabel(LabelledRecipe preRecipe) {
+        return new Label(preRecipe.getMealid(), preRecipe.isPre(), preRecipe.isPost(), preRecipe.isRecovery(), preRecipe.isHealthy());
     }
 
     public List<meals> getRandomTenMeals(List<meals> allMeals) {
@@ -45,6 +122,17 @@ public class RecipeWorker {
         return randomMeals;
     }
 
+    public List<Integer> getTenRandomMealids(List<Label> recipes) {
+        Random rand = new Random();
+        List<Integer> randomIDs = new ArrayList<>();
+        for (int i =0; i < 10; i++) {
+            int randInt = rand.nextInt(recipes.size());
+            Label l = recipes.get(randInt);
+            randomIDs.add((int)l.getMealid());
+        }
+        return randomIDs;
+    }
+
     public Recipe convertMealToRecipe(meals meal) {
         String[] ingredients = splitIngredients(meal.getIngredients());
         String[] keywords = meal.getKeywords().split(",");
@@ -54,18 +142,26 @@ public class RecipeWorker {
         double carbPercentage = calculateMacros(meal.getCarbs()*4, meal.getKcal());
         double cookTimeInMinutes = meal.getCookTime()/60;
         double prepTimeInMinutes = meal.getPrepTime()/60;
+        Optional<LabelledRecipe> optionalLabels = labelRepository.findById(meal.getMealid());
+        LabelledRecipe labels = optionalLabels.orElse(new LabelledRecipe(meal.getMealid(), false, false, false, false));
 
         return new Recipe(meal.getMealid(), meal.getCarbs(), cookTimeInMinutes, meal.getDescription(), meal.getFat(),
                 meal.getFibre(), meal.getImage_url(), ingredients, meal.getKcal(), keywords, method,
                 prepTimeInMinutes, meal.getProtein(), meal.getRating(), meal.getSalt(), meal.getSaturates(),
-                meal.getSugars(), meal.getTitle(), proteinPercentage, carbPercentage, fatPercentage);
+                meal.getSugars(), meal.getTitle(), proteinPercentage, carbPercentage, fatPercentage, labels.isPre(), labels.isPost(), labels.isRecovery(), labels.isHealthy());
     }
 
+
     public String[] splitIngredients(String ingredients) {
-        String ingredientString = ingredients.substring(8,ingredients.length());
-        String[] ingredientList = ingredientString.split(";");
-        for (int i = 0; i<ingredientList.length; i++) {
-            ingredientList[i] = ingredientList[i].trim();
+        String[] ingredientList;
+        if (!ingredients.isEmpty() && ingredients.length()>7) {
+            String ingredientString = ingredients.substring(8,ingredients.length());
+            ingredientList = ingredientString.split(";");
+            for (int i = 0; i<ingredientList.length; i++) {
+                ingredientList[i] = ingredientList[i].trim();
+            }
+        } else {
+            ingredientList = new String[0];
         }
         return ingredientList;
     }

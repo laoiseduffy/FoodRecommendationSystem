@@ -17,10 +17,8 @@ public class Application {
 
     @Bean
     CommandLineRunner init(RecipeRepository recipeRepository) {
-        System.out.println("Hello");
         List<meals> meals = (List<meals>) recipeRepository.findAllById(Collections.singleton(1L));
         return args -> {
-            System.out.println(meals);
         };
     }
 

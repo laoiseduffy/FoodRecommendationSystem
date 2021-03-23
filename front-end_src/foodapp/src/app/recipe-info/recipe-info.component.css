@@ -4,12 +4,24 @@
   text-align: center;
 }
 
+h5 {
+  padding: 10px;
+  margin-top: 10px;
+}
+
 .column {
   float: left;
   width: 50%;
   padding: 10px;
   height: auto; /* Should be removed. Only for demonstration */
   color: #848484;
+}
+
+.col_2 {
+  float: left;
+  width: 30%;
+  padding: 5px;
+  height: auto
 }
 
 .row {
@@ -24,19 +36,19 @@
 .protein {
   color: pink;
   text-align: right;
-  margin-right: 200px;
+  margin-right: 100px;
 }
 
 .carbs {
   color: lightblue;
   text-align: right;
-  margin-right: 200px;
+  margin-right: 100px;
 }
 
 .fat {
   color: orange;
   text-align: right;
-  margin-right: 200px;
+  margin-right: 100px;
 }
 
 .piechart {
@@ -53,3 +65,32 @@ body,
       justify-content: center;
       align-items: center;
   }
+
+* {
+  box-sizing: border-box;
+}
+
+.list2 {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list2 li {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-align: right;
+}
+
+.label {
+  color: white;
+  padding: 8px;
+  margin-right: 5px;
+  border-radius: 10px;
+  width: 125px;
+  text-align: center;
+}
+
+.success {background-color: #4CAF50;}

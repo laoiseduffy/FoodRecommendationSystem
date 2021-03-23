@@ -1,5 +1,12 @@
-
-<h4 class="list-header">Top 10 Recommendations</h4>
+<div class="search">
+  <form class="example" (ngSubmit)="search()" action="/action_page.php">
+    <input type="text" [(ngModel)]="word" placeholder="Search by keyword or ingredient..." name="search">
+    <button type="submit" (click)="search()"><i class="fa fa-search"></i></button>
+  </form>
+  <div [hidden]="hide">
+    <p class="results">showing {{total}} of 14,000 recipes</p>
+  </div>
+</div>
 
 <div class="row">
 

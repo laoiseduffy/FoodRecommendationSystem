@@ -1,0 +1,9 @@
+/* Change the color of links on hover */
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+i {
+  color: #4BB2D0
+}
