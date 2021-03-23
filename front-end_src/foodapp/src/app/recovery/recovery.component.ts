@@ -14,7 +14,7 @@ export class RecoveryComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-    this.recipeService.getPreRecipes().subscribe(data => {
+    this.recipeService.getRecoveryRecipes().subscribe(data => {
       this.preRecipes = data;
     });
   }

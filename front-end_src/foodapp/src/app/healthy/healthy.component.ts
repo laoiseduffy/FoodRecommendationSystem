@@ -14,7 +14,7 @@ export class HealthyComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-    this.recipeService.getPreRecipes().subscribe(data => {
+    this.recipeService.getHealthyRecipes().subscribe(data => {
       this.preRecipes = data;
     });
   }
