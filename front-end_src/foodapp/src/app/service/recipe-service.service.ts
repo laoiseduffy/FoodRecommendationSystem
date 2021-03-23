@@ -16,17 +16,6 @@ export class RecipeService {
     this.recipeUrl = 'http://localhost:8080';
   }
 
-  public findAll(): Observable<Recipe[]> {
-    this.observableRecipeList = this.http.get<Recipe[]>(this.recipeUrl + '/recipes');
-    console.log("Fetching from db");
-    console.log(this.observableRecipeList);
-    return this.observableRecipeList;
-  }
-
-  public getRecipeList(): Observable<Recipe[]> {
-    return this.observableRecipeList;
-  }
-
   public findRecipeById(mealId: number): Observable<Recipe> {
     console.log(this.recipeUrl + `/recipes/${mealId}`);
     return this.http.get<Recipe>(this.recipeUrl + `/recipes/${mealId}`);
@@ -52,7 +41,4 @@ export class RecipeService {
     return this.http.get<Recipe[]>(this.recipeUrl + `/keyword/${word}`);
   }
 
-  public save(recipe: Recipe) {
-    return this.http.post<Recipe>(this.recipeUrl, recipe);
-  }
 }
