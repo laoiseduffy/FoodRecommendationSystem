@@ -23,8 +23,12 @@ public class Recipe {
     private double proteinPercentage;
     private double carbsPercentage;
     private double fatPercentage;
+    private boolean pre;
+    private boolean post;
+    private boolean recovery;
+    private boolean healthy;
 
-    public Recipe(long mealid, long carbs, double cookTime, String description, long fat, long fibre, String image_url, String[] ingredients, long kcal, String[] keywords, String method, double prepTime, long protein, double rating, long salt, long saturates, long sugars, String title, double proteinPercentage, double carbsPercentage, double fatPercentage) {
+    public Recipe(long mealid, long carbs, double cookTime, String description, long fat, long fibre, String image_url, String[] ingredients, long kcal, String[] keywords, String method, double prepTime, long protein, double rating, long salt, long saturates, long sugars, String title, double proteinPercentage, double carbsPercentage, double fatPercentage, boolean pre, boolean post, boolean recovery, boolean healthy) {
         this.mealid = mealid;
         this.carbs = carbs;
         this.cookTime = cookTime;
@@ -46,6 +50,10 @@ public class Recipe {
         this.proteinPercentage = proteinPercentage;
         this.carbsPercentage = carbsPercentage;
         this.fatPercentage = fatPercentage;
+        this.pre = pre;
+        this.post = post;
+        this.recovery = recovery;
+        this.healthy = healthy;
     }
 
     public long getMealid() {
@@ -214,5 +222,37 @@ public class Recipe {
 
     public void setFatPercentage(double fatPercentage) {
         this.fatPercentage = fatPercentage;
+    }
+
+    public boolean isPre() {
+        return pre;
+    }
+
+    public void setPre(boolean pre) {
+        this.pre = pre;
+    }
+
+    public boolean isPost() {
+        return post;
+    }
+
+    public void setPost(boolean post) {
+        this.post = post;
+    }
+
+    public boolean isRecovery() {
+        return recovery;
+    }
+
+    public void setRecovery(boolean recovery) {
+        this.recovery = recovery;
+    }
+
+    public boolean isHealthy() {
+        return healthy;
+    }
+
+    public void setHealthy(boolean healthy) {
+        this.healthy = healthy;
     }
 }

@@ -4,11 +4,17 @@
   </header>
 
   <div class="column">
+    <div class="row">
+      <span class="label success" [hidden]="!recipe.pre">PRE <i class="fa fa-check"></i> </span>
+      <span class="label success" [hidden]="!recipe.post">POST <i class="fa fa-check"></i></span>
+      <span class="label success" [hidden]="!recipe.recovery">RECOVERY <i class="fa fa-check"></i></span>
+      <span class="label success" [hidden]="!recipe.healthy">HEALTHY <i class="fa fa-check"></i></span>
+    </div>
     <h5>{{ recipe.description }}</h5>
     <br>
     <p><i>{{ recipe.keywords }}</i></p>
     <br>
-    <div>
+    <div class="row">
       <div class="col_2">
         <i class="fa fa-clock-o fa-5x" aria-hidden="true"></i> <br>
         <b>Cook Time:</b> <br>
@@ -22,12 +28,9 @@
         <i class="fa fa-clock-o fa-5x" aria-hidden="true"></i> <br>
         <b>Total Time:</b> <br>{{ recipe.prepTime+recipe.cookTime }} minutes
       </div>
-    </div>
-    <div class="row">
       <br>
-      <h5> Method </h5>
-      <p>{{ recipe.method }} </p>
     </div>
+
     <h5>Nutrition</h5>
     <ul class="list2">
       <li>
@@ -40,13 +43,13 @@
         Saturated Fat ---------------------------------------------------- {{recipe.saturates}}g
       </li>
       <li>
-        Carbohydrates -------------------------------------------------- {{recipe.carbs}}g
+        Carbohydrates ------------------------------------------------- {{recipe.carbs}}g
       </li>
       <li>
         Sugars ---------------------------------------------------------- {{recipe.sugars}}g
       </li>
       <li>
-        Fibre ------------------------------------------------------------- {{recipe.fibre}}g
+        Fibre ------------------------------------------------------------ {{recipe.fibre}}g
       </li>
       <li>
         Protein ---------------------------------------------------------- {{recipe.protein}}g
@@ -55,30 +58,36 @@
         Salt -------------------------------------------------------------- {{recipe.salt}}g
       </li>
     </ul>
-  </div>
 
-  <div class="column">
-    <img class="img" src="{{recipe.image_url}}" alt="Image not found">
-    <h5> Ingredients </h5>
-    <ul>
-      <li  *ngFor="let ingredient of recipe.ingredients" >
-        {{ ingredient }}
-      </li>
-    </ul>
     <h5>Macronutrient Percentages</h5>
     <div class="piechart" style="background-image: conic-gradient(
       pink {{ recipe.proteinPercentage * 360 }}deg,
       lightblue 0 {{ recipe.carbsPercentage * 360 + recipe.proteinPercentage * 360}}deg,
       orange 0)"></div>
     <p class="protein">
-      Protein {{recipe.proteinPercentage | number:'1.2-2'}}
+      Protein: {{ (recipe.proteinPercentage*100 | number:'1.0-0') }}%
     </p>
     <p class="carbs">
-      Carbs {{recipe.carbsPercentage | number:'1.2-2'}}
+      Carbs: {{(recipe.carbsPercentage*100 | number:'1.0-0')}}%
     </p>
     <p class="fat">
-      Fat {{recipe.fatPercentage | number:'1.2-2'}}
+      Fat: {{(recipe.fatPercentage*100 | number:'1.0-0')}}%
     </p>
+
+  </div>
+
+  <div class="column">
+    <img class="img" src="{{recipe.image_url}}" alt="Image not found">
+
+    <h5> Ingredients </h5>
+    <ul>
+      <li  *ngFor="let ingredient of recipe.ingredients" >
+        {{ ingredient }}
+      </li>
+    </ul>
+
+    <h5> Method </h5>
+    <p>{{ recipe.method }} </p>
   </div>
 
 </div>

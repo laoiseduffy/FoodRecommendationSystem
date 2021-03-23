@@ -83,3 +83,14 @@ body,
   padding: 12px;
   text-align: right;
 }
+
+.label {
+  color: white;
+  padding: 8px;
+  margin-right: 5px;
+  border-radius: 10px;
+  width: 125px;
+  text-align: center;
+}
+
+.success {background-color: #4CAF50;}

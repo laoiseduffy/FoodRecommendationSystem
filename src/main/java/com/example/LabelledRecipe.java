@@ -22,6 +22,16 @@ public class LabelledRecipe {
     @Column(name = "healthy")
     private boolean healthy;
 
+    public LabelledRecipe() {
+    }
+
+    public LabelledRecipe(long mealid, boolean pre, boolean post, boolean recovery, boolean healthy) {
+        this.mealid = mealid;
+        this.pre = pre;
+        this.post = post;
+        this.recovery = recovery;
+        this.healthy = healthy;
+    }
 
     public long getMealid() {
         return mealid;

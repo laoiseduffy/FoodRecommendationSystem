@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Component
@@ -141,12 +142,15 @@ public class RecipeWorker {
         double carbPercentage = calculateMacros(meal.getCarbs()*4, meal.getKcal());
         double cookTimeInMinutes = meal.getCookTime()/60;
         double prepTimeInMinutes = meal.getPrepTime()/60;
+        Optional<LabelledRecipe> optionalLabels = labelRepository.findById(meal.getMealid());
+        LabelledRecipe labels = optionalLabels.orElse(new LabelledRecipe(meal.getMealid(), false, false, false, false));
 
         return new Recipe(meal.getMealid(), meal.getCarbs(), cookTimeInMinutes, meal.getDescription(), meal.getFat(),
                 meal.getFibre(), meal.getImage_url(), ingredients, meal.getKcal(), keywords, method,
                 prepTimeInMinutes, meal.getProtein(), meal.getRating(), meal.getSalt(), meal.getSaturates(),
-                meal.getSugars(), meal.getTitle(), proteinPercentage, carbPercentage, fatPercentage);
+                meal.getSugars(), meal.getTitle(), proteinPercentage, carbPercentage, fatPercentage, labels.isPre(), labels.isPost(), labels.isRecovery(), labels.isHealthy());
     }
+
 
     public String[] splitIngredients(String ingredients) {
         String[] ingredientList;
