@@ -20,21 +20,13 @@ public class RecipeWorker {
         this.labelRepository = labelRepository;
     }
 
-    @Autowired
-    public List<Recipe> getRecommendations() {
-        List<meals> allMeals = (List<meals>) recipeRepository.findAll();
-//        List<meals> randomMeals = getRandomTenMeals(allMeals);
-        List<Recipe> recipeList = new ArrayList<>();
-        for (meals meal: allMeals) {
-            Recipe recipe = convertMealToRecipe(meal);
-            recipeList.add(recipe);
-        }
-        return recipeList;
-    }
-
     public Recipe getMealById(Long mealId) {
         meals meal = recipeRepository.findById(mealId).orElse(null);
-        return convertMealToRecipe(meal);
+        if (meal != null) {
+            return convertMealToRecipe(meal);
+        } else {
+            return null;
+        }
     }
 
     public List<Recipe> getByKeyword(String word) {
@@ -111,21 +103,14 @@ public class RecipeWorker {
         return new Label(preRecipe.getMealid(), preRecipe.isPre(), preRecipe.isPost(), preRecipe.isRecovery(), preRecipe.isHealthy());
     }
 
-    public List<meals> getRandomTenMeals(List<meals> allMeals) {
-        Random rand = new Random();
-        List<meals> randomMeals = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            int randInt = rand.nextInt(allMeals.size());
-            meals m = allMeals.get(randInt);
-            randomMeals.add(m);
-        }
-        return randomMeals;
-    }
-
     public List<Integer> getTenRandomMealids(List<Label> recipes) {
         Random rand = new Random();
         List<Integer> randomIDs = new ArrayList<>();
-        for (int i =0; i < 10; i++) {
+        int randomSize = recipes.size();
+        if (recipes.size() > 10) {
+            randomSize = 10;
+        }
+        for (int i =0; i < randomSize; i++) {
             int randInt = rand.nextInt(recipes.size());
             Label l = recipes.get(randInt);
             randomIDs.add((int)l.getMealid());
@@ -167,7 +152,7 @@ public class RecipeWorker {
     }
 
     public String removeHTMLFromString(String string) {
-        String[] wordsToRemove = {"not set;", "<p>", "</p>", ";"};
+        String[] wordsToRemove = {"not set;", "<p>", "</p>", ";", "&nbsp;"};
         for (String currentWordToRemove : wordsToRemove) {
             if (string.contains(currentWordToRemove)) {
                 string = string.replaceAll(currentWordToRemove, "");

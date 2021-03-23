@@ -14,11 +14,6 @@ public class RecipeController {
         this.recipeWorker = recipeWorker;
     }
 
-    @GetMapping("/recipes")
-    public List<Recipe> getRecipes() {
-        return recipeWorker.getRecommendations();
-    }
-
     @GetMapping("/recipes/{id}")
     public Recipe getRecipeById(@PathVariable Long id) {
         return recipeWorker.getMealById(id);
