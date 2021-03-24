@@ -15,6 +15,11 @@ module.exports = function (config) {
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    //files: [
+//            'src/**/*.spec.ts',
+//            'src/**/*.d.ts',
+//            'src/app/*.spec.ts',
+//          ],
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },

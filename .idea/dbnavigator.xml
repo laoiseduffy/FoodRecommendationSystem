@@ -23,17 +23,13 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="a2665c57-af10-457e-ba45-277138457d0e">
-        <schema name="fooddb" object-types="function, dataset trigger, view, column, procedure, constraint, table, index" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a2665c57-af10-457e-ba45-277138457d0e">
-      <console name="Food DB" type="STANDARD" schema="mysql" session="Main">select * from fooddb.meals;
+      <console name="Food DB" type="STANDARD" schema="mysql" session="Main"><![CDATA[select * from fooddb.meals;
 
-create</console>
+create]]></console>
     </connection>
     <connection id="982d8a15-2362-4acd-a02d-244c3b729111">
       <console name="Connection" type="STANDARD" schema="" session="Main" />
