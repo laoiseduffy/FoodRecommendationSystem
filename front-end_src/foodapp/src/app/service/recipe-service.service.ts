@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RecipeService {
 
-  private recipeUrl: string;
+  recipeUrl: string;
   recipeList: Recipe[];
   observableRecipeList: Observable<Recipe[]>;
   selectedRecipe: Recipe;
