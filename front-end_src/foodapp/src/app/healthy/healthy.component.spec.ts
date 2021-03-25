@@ -6,54 +6,27 @@ import { HttpClient ,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Recipe } from '../model/meal';
 
-class MockRecipeService {
-  getHealthyRecipes = 'healthyRecipes';
-  recipeUrl = '';
-  recipeList = [];
-  observableRecipeList = new Observable<Recipe[]>();
-  selectedRecipe = new Recipe();
-//   http = 'http';
-  findRecipeById = 'fake id';
-  getPreRecipes = 'fake pre';
-  getPostRecipes = 'post fake';
-  getRecoveryRecipes = 'recovery fake';
-  getByKeyword = 'fake keyword';
-  constructor(private http: HttpClient) {}
-}
-
-//     const fake =  { getHealthyRecipes: () => 'fake value', private recipeUrl: () => 'url', recipeList: () => 'list',
-//                       observableRecipeList: () => 'list2', selectedRecipe: () => 'recipe', http: () => 'http',
-//                       findRecipeById: () => 'fake id', getPreRecipes: () => 'fake pre',
-//                       getPostRecipes: () => 'post fake', getRecoveryRecipes: () => 'recovery fake',
-//                       getByKeyword: () => 'fake keyword'};
-
 describe('HealthyComponent', () => {
   let component: HealthyComponent;
   let fixture: ComponentFixture<HealthyComponent>;
   let recipeService: RecipeService;
-//   let http: HttpClient;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-//       declarations: [ HealthyComponent ],
-      providers: [
-        HealthyComponent,
-        { provide: RecipeService, useClass: MockRecipeService }
-      ]
-    })
-    .compileComponents();
-    component = TestBed.inject(HealthyComponent);
-    recipeService = TestBed.inject(RecipeService);
-  });
+  let recipeServiceStub: Partial<RecipeService>;
+  let observableRecipeList: Observable<Recipe[]>;
 
   beforeEach(() => {
+    recipeServiceStub = {
+      getHealthyRecipes: () => observableRecipeList
+    };
+    TestBed.configureTestingModule({
+      declarations: [ HealthyComponent ],
+      providers: [ { provide: RecipeService, useValue: recipeServiceStub } ],
+    });
     fixture = TestBed.createComponent(HealthyComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    recipeService = TestBed.inject(RecipeService);
+  })
 
   it('should create', () => {
-    component = new HealthyComponent(new MockRecipeService(new HttpClient(new HttpHandler)));
     expect(component).toBeTruthy();
   });
 });
