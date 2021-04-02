@@ -11,7 +11,7 @@
       <quote-values-containing-separator value="true" />
       <quote-all-values value="false" />
       <value-separator value="" />
-      <file-name value="901-2000.xls" />
+      <file-name value="remainingMeals.xls" />
       <file-location value="$PROJECT_DIR$/../CSC3002/Data" />
       <scope value="GLOBAL" />
       <destination value="FILE" />
@@ -23,7 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="a2665c57-af10-457e-ba45-277138457d0e">
+        <schema name="fooddb" object-types="index, function, dataset trigger, procedure, view, table, constraint, column" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a2665c57-af10-457e-ba45-277138457d0e">
@@ -47,8 +51,8 @@ create]]></console>
       <filter id="e47b7c62-5a83-4e6e-9b9e-9fc58ee55442" name="50" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="protein" operator="&gt;=" value="50" active="true" />
       </filter>
-      <filter id="87646757-873d-49bf-9eee-f2f189a5af1a" name="901 AND 2000" temporary="false" custom-name="false" type="basic" join-type="AND">
-        <condition column="mealid" operator="between" value="901 AND 2000" active="true" />
+      <filter id="87646757-873d-49bf-9eee-f2f189a5af1a" name="2001 AND 13678" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="mealid" operator="between" value="2001 AND 13678" active="true" />
       </filter>
       <filter id="86990942-a894-40c7-901c-206b99943dd3" name="8909" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="mealid" operator="=" value="8909" active="true" />
@@ -63,6 +67,9 @@ create]]></console>
     <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="fooddb.labelledRecipes" active-filter-id="EMPTY_FILTER">
       <filter id="ae82cf67-bdd4-4f3e-bcad-548cf06cdb4d" name="3" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="mealid" operator="=" value="3" active="true" />
+      </filter>
+      <filter id="2b18f1df-126b-48ee-b90d-731e3bde11c3" name="13000" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="mealid" operator="=" value="13000" active="true" />
       </filter>
     </filter-actions>
     <filter-actions connection-id="a2665c57-af10-457e-ba45-277138457d0e" dataset="fooddb.user" active-filter-id="" />
