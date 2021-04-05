@@ -96,7 +96,7 @@ describe('SearchComponent', () => {
           expect(component.searchComplete).toHaveBeenCalled();
           expect(component.hide).toBe(false);
           expect(component.total).toBe(1);
-          expect(results.textContent).toEqual('showing 1 of 14,000 recipes');
+          expect(results.textContent).toEqual('showing 1 of 13,700 recipes');
         });
   }));
 
