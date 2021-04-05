@@ -7,6 +7,7 @@ import { PostComponent } from './post/post.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { HealthyComponent } from './healthy/healthy.component';
 import { SearchComponent } from './search/search.component';
+import { HelpComponent } from './help/help.component';
 
 const routes: Routes = [
   { path: 'recipe-info/:mealid', component: RecipeInfoComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'post', component: PostComponent },
   { path: 'recovery', component: RecoveryComponent },
   { path: 'healthy', component: HealthyComponent },
-  { path: 'search', component: SearchComponent }
+  { path: 'search', component: SearchComponent },
+  { path: 'help', component: HelpComponent }
 ];
 
 @NgModule({
