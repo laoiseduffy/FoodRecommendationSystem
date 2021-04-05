@@ -40,4 +40,50 @@ public class RecipeControllerIntegrationTest {
         assertThat(contentAsString).doesNotContain("not set;");
     }
 
+    @Test
+    public void getPreRecipesTest() throws Exception {
+        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:4200/prerecipes"))
+                .andExpect(status().isOk());
+        MvcResult result = resultActions.andReturn();
+        String contentAsString = result.getResponse().getContentAsString();
+        assertThat(contentAsString).contains("Exotic avocado salad");
+        assertThat(contentAsString).doesNotContain("not set;");
+    }
+
+    @Test
+    public void getPostRecipes() throws Exception {
+        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:4200/postrecipes"))
+                .andExpect(status().isOk());
+        MvcResult result = resultActions.andReturn();
+        String contentAsString = result.getResponse().getContentAsString();
+        assertThat(contentAsString).contains("Exotic avocado salad");
+        assertThat(contentAsString).doesNotContain("not set;");
+    }
+
+    @Test
+    public void getRecoveryRecipes() throws Exception {
+        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:4200/recoveryrecipes"))
+                .andExpect(status().isOk());
+        MvcResult result = resultActions.andReturn();
+        String contentAsString = result.getResponse().getContentAsString();
+        assertThat(contentAsString).contains("Exotic avocado salad");
+        assertThat(contentAsString).doesNotContain("not set;");
+    }
+
+    @Test
+    public void getHealthyRecipes() throws Exception {
+        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:4200/healthyrecipes"))
+                .andExpect(status().isOk());
+        MvcResult result = resultActions.andReturn();
+        String contentAsString = result.getResponse().getContentAsString();
+        assertThat(contentAsString).contains("Exotic avocado salad");
+        assertThat(contentAsString).doesNotContain("not set;");
+    }
+
+    @Test
+    public void getByKeywordTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:4200/keyword/hello"))
+                .andExpect(status().isOk());
+    }
+
 }

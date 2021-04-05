@@ -3,6 +3,7 @@ package com.example;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,7 +70,7 @@ public class TestConfig {
 
             @Override
             public List<meals> findAllByKeyword(String word) {
-                return null;
+                return mealListExample();
             }
         };
     }
@@ -79,22 +80,22 @@ public class TestConfig {
         return new LabelRepository() {
             @Override
             public List<LabelledRecipe> findAllByPre(Boolean pre) {
-                return null;
+                return labelledRecipesExample();
             }
 
             @Override
             public List<LabelledRecipe> findAllByPost(Boolean post) {
-                return null;
+                return labelledRecipesExample();
             }
 
             @Override
             public List<LabelledRecipe> findAllByRecovery(Boolean recovery) {
-                return null;
+                return labelledRecipesExample();
             }
 
             @Override
             public List<LabelledRecipe> findAllByHealthy(Boolean healthy) {
-                return null;
+                return labelledRecipesExample();
             }
 
             @Override
@@ -164,6 +165,13 @@ public class TestConfig {
         return new RecipeController(recipeWorker());
     }
 
+    public List<meals> mealListExample() {
+        List<meals> mealsList = new ArrayList<>();
+        mealsList.add(mealExample().orElse(null));
+        mealsList.add(mealExample().orElse(null));
+        return mealsList;
+    }
+
     public Optional<meals> mealExample() {
         meals m = new meals();
         m.setMealid(3);
@@ -185,5 +193,14 @@ public class TestConfig {
         m.setSugars(5);
         m.setTitle("Exotic avocado salad");
         return Optional.of(m);
+    }
+
+    public List<LabelledRecipe> labelledRecipesExample() {
+        LabelledRecipe recipe = new LabelledRecipe(2L, true, true, true, true);
+        LabelledRecipe recipe2 = new LabelledRecipe(3L, true, true, true, true);
+        List<LabelledRecipe> recipeList = new ArrayList<>();
+        recipeList.add(recipe);
+        recipeList.add(recipe2);
+        return recipeList;
     }
 }

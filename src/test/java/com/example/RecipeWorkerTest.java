@@ -41,6 +41,18 @@ public class RecipeWorkerTest {
     }
 
     @Test
+    public void unlabelledRecipeTest() {
+        meals meal = createMeal();
+        when(recipeRepository.findById(555L)).thenReturn(Optional.ofNullable(meal));
+        when(labelRepository.findById(555L)).thenReturn(Optional.of(new LabelledRecipe()));
+        Recipe recipe = recipeWorker.getMealById(555L);
+        assertThat(recipe.isHealthy()).isFalse();
+        assertThat(recipe.isRecovery()).isFalse();
+        assertThat(recipe.isPre()).isFalse();
+        assertThat(recipe.isPost()).isFalse();
+    }
+
+    @Test
     public void getByKeywordTest() {
         meals meal = createMeal();
         List<meals> mealsList = new ArrayList<>();
@@ -121,6 +133,40 @@ public class RecipeWorkerTest {
     }
 
     @Test
+    public void getRecoveryRecipesValidTest() {
+        LabelledRecipe labelledRecipe1 = new LabelledRecipe(1L, true, true, true, true);
+        LabelledRecipe labelledRecipe2 = new LabelledRecipe(2L, true, false, true, true);
+        LabelledRecipe labelledRecipe3 = new LabelledRecipe(3L, true, false, true, false);
+        List<LabelledRecipe> labelledRecipeList = new ArrayList<>();
+        labelledRecipeList.add(labelledRecipe1);
+        labelledRecipeList.add(labelledRecipe2);
+        labelledRecipeList.add(labelledRecipe3);
+        when(labelRepository.findAllByRecovery(Boolean.TRUE)).thenReturn(labelledRecipeList);
+        when(labelRepository.findById(any())).thenReturn(java.util.Optional.of(new LabelledRecipe(555L, true, false, true, false)));
+        meals meal = createMeal();
+        when(recipeRepository.findById(any())).thenReturn(Optional.ofNullable(meal));
+        List<Recipe> recipeList = recipeWorker.getRecoveryRecipes();
+        assertThat(recipeList.size()).isEqualTo(3);
+    }
+
+    @Test
+    public void getHealthyRecipesTest() {
+        LabelledRecipe labelledRecipe1 = new LabelledRecipe(1L, true, true, true, true);
+        LabelledRecipe labelledRecipe2 = new LabelledRecipe(2L, true, false, true, true);
+        LabelledRecipe labelledRecipe3 = new LabelledRecipe(3L, true, false, true, true);
+        List<LabelledRecipe> labelledRecipeList = new ArrayList<>();
+        labelledRecipeList.add(labelledRecipe1);
+        labelledRecipeList.add(labelledRecipe2);
+        labelledRecipeList.add(labelledRecipe3);
+        when(labelRepository.findAllByHealthy(Boolean.TRUE)).thenReturn(labelledRecipeList);
+        when(labelRepository.findById(any())).thenReturn(java.util.Optional.of(new LabelledRecipe(555L, true, false, true, true)));
+        meals meal = createMeal();
+        when(recipeRepository.findById(any())).thenReturn(Optional.ofNullable(meal));
+        List<Recipe> recipeList = recipeWorker.getHealthyRecipes();
+        assertThat(recipeList.size()).isEqualTo(3);
+    }
+
+    @Test
     public void splitIngredientsTest() {
         String ingredientsFromDb = "not set; small  aubergine, trimmed and cut into chunks ; courgette trimmed and cut into chunks ; red onion, thinly sliced; garlic cloves, unpeeled and left whole; olive oil; tomato; penne pasta ; basil leaves";
         String[] splitIngredients = recipeWorker.splitIngredients(ingredientsFromDb);
@@ -154,6 +200,8 @@ public class RecipeWorkerTest {
         assertThat(result).isNotNull();
         assertThat(result.isPre()).isTrue();
         assertThat(result.isRecovery()).isTrue();
+        assertThat(result.isPost()).isFalse();
+        assertThat(result.isHealthy()).isFalse();
     }
 
     @Test
