@@ -15,11 +15,4 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    CommandLineRunner init(RecipeRepository recipeRepository) {
-//        List<meals> meals = (List<meals>) recipeRepository.findAllById(Collections.singleton(1L));
-        return args -> {
-        };
-    }
-
 }
