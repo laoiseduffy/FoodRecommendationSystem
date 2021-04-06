@@ -29,8 +29,13 @@ public class RecipeWorker {
         }
     }
 
+    public String addSpaceToString(String word) {
+        return " " + word;
+    }
+
     public List<Recipe> getByKeyword(String word) {
-        List<meals> allMeals = recipeRepository.findAllByKeyword(word);
+        String wordWithSpace = addSpaceToString(word);
+        List<meals> allMeals = recipeRepository.findAllByKeyword(wordWithSpace);
         List<Recipe> recipeList = new ArrayList<>();
         for (meals meal: allMeals) {
             Recipe recipe = convertMealToRecipe(meal);

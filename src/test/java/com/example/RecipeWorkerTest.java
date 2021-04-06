@@ -58,7 +58,7 @@ public class RecipeWorkerTest {
         List<meals> mealsList = new ArrayList<>();
         mealsList.add(meal);
         when(labelRepository.findById(555L)).thenReturn(java.util.Optional.of(new LabelledRecipe(555L, true, false, true, false)));
-        when(recipeRepository.findAllByKeyword("sugar")).thenReturn(mealsList);
+        when(recipeRepository.findAllByKeyword(" sugar")).thenReturn(mealsList);
         List<Recipe> recipes = recipeWorker.getByKeyword("sugar");
         assertThat(recipes.size()).isEqualTo(1);
         assertThat(recipes.get(0).isHealthy()).isFalse();
@@ -225,6 +225,12 @@ public class RecipeWorkerTest {
         meals meal = createBlankMeal();
         Recipe blankRecipe = recipeWorker.convertMealToRecipe(meal);
         assertThat(blankRecipe.getMealid()).isEqualTo(0L);
+    }
+
+    @Test
+    public void addSpaceToStringTest() {
+        String wordAfter = recipeWorker.addSpaceToString("egg");
+        assertThat(wordAfter).isEqualTo(" egg");
     }
 
     private meals createMeal() {
